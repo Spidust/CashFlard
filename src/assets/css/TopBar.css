@@ -1,0 +1,10 @@
+.top-bar {
+    padding: 10px;
+
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+}

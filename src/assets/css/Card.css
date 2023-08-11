@@ -1,0 +1,87 @@
+.react-card-flip {
+  height: calc(100% - 100px);
+}
+
+.react-card-front,
+.react-card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__front,
+.card__back {
+  width: 90%;
+  height: 90%;
+  padding: 15px;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--card-color);
+  color: white;
+
+  position: relative;
+
+  border-radius: 10px;
+}
+
+.card-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  height: 80%;
+}
+
+.card-image,
+.card-image img {
+  width: 100%;
+}
+
+.card-question {
+  width: 100%;
+
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.card-answer {
+  width: 100%;
+
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.card-input {
+  background-color: transparent;
+  color: white;
+
+  border: none;
+  border-bottom: 5px white dashed;
+  outline: none;
+
+  font-size: 2rem;
+}
+
+.right,
+.wrong {
+  font-size: 1.3rem;
+
+  display: flex;
+}
+
+.right {
+  color: lime;
+}
+
+.wrong {
+  color: rgb(255, 55, 55);
+}
+.flip-btn {
+  position: absolute;
+  bottom: 10px;
+
+  font-size: 2rem;
+  cursor: pointer;
+}
