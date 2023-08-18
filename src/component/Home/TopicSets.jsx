@@ -11,7 +11,7 @@ function TopicSets() {
       <div className="topic-items">
         <TopicItem cardId="1" topicId={1} selectFunction={Select}></TopicItem>
       </div>
-      {selecting && <SelectMenu quit={() => Select(0)} />}
+      {selecting ? <SelectMenu quit={() => Select(0)} /> : null}
     </div>
   );
 }
