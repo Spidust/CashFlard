@@ -1,7 +1,7 @@
 import { FaPlus, FaBars, FaHome } from "react-icons/fa";
 import "../assets/css/ControlBar.css";
 import { Link } from "react-router-dom";
-import CreateModal from "./CreateModal";
+import CreateModal from "./Home/CreateModal";
 import { useState } from "react";
 
 function ControlBar() {

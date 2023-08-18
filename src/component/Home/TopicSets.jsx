@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TopicItem from "./TopicItem";
-import "../../assets/css/Topic.css";
-import SelectMenu from "../SelectMenu";
+import "../../assets/css/home/Topic.css";
+import SelectMenu from "./SelectMenu";
 
 function TopicSets() {
   const [selecting, Select] = useState(0);

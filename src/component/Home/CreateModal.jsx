@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/CreateModal.css";
+import "../../assets/css/home/CreateModal.css";
 import { FaTimes } from "react-icons/fa";
 function CreateModal(props) {
   return (
