@@ -10,12 +10,31 @@ function Front(props) {
         </div>
         <div className="card-question">{props.question}</div>
 
-        <input
-          className="card-input"
-          style={{ width: props.answer.length * 16 }}
-          value={props.input}
-          onChange={(e) => props.setInput(e.target.value.toLowerCase())}
-        ></input>
+        {props.type == "tl" ? (
+          <input
+            className="card-input-tl"
+            style={{ width: props.answer.length * 16 }}
+            value={props.input}
+            onChange={(e) => props.setInput(e.target.value.toLowerCase())}
+          ></input>
+        ) : (
+          <div className="card-input-tn">
+            {props.answer.map((item, index) => {
+              return (
+                <div
+                  className={
+                    "card-input-tn-item " +
+                    (index == props.input ? "selecting" : "")
+                  }
+                  key={index}
+                  onClick={() => props.setInput(index)}
+                >
+                  {item}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="flip-btn" onClick={() => props.setFlipped(true)}>

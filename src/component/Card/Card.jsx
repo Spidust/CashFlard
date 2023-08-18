@@ -15,7 +15,8 @@ function Card() {
         setFlipped={setFlipped}
         image="https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0"
         question="Gọi tên con này trong tiếng anh"
-        answer="leopard"
+        answer={["1", "2", "3", "4"]}
+        type="tn"
         input={input}
         setInput={setInput}
       />

@@ -27,3 +27,8 @@
 .hover-up:hover {
   transform: translateY(-10px);
 }
+
+mt-4 {
+  display: block;
+  margin-top: 1.4rem;
+}
