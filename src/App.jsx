@@ -5,12 +5,15 @@ import TopicSets from "./component/Home/TopicSets";
 import TopBar from "./component/TopBar";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Menu from "./component/Home/Menu";
 
 function App() {
   return (
     <div className="app">
-      <TopBar></TopBar>
       <Router>
+        <TopBar></TopBar>
+        <Menu />
+
         <Routes>
           <Route path="/">
             <Route index element={<TopicSets />} exact></Route>

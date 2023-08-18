@@ -1,10 +1,26 @@
 .menu {
-  transform: translateX(100%);
+  animation: appear 0.5s ease;
 
   max-width: 400px;
   max-height: 700px;
   height: 100vh;
   width: 100vw;
 
-  background-color: var(--primary-color);
+  background-color: rgb(0, 255, 106);
+}
+
+.menu.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
