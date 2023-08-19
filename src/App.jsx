@@ -15,8 +15,8 @@ function App() {
   const [active, setActive] = useState(false);
 
   return (
-    <div className="app">
-      <Provider store={store}>
+    <Provider store={store}>
+      <div className="app">
         <Router>
           <TopBar></TopBar>
           {active && <Menu quit={() => setActive(false)} />}
@@ -29,8 +29,8 @@ function App() {
           </Routes>
           <ControlBar openMenu={() => setActive(true)}></ControlBar>
         </Router>
-      </Provider>
-    </div>
+      </div>{" "}
+    </Provider>
   );
 }
 
