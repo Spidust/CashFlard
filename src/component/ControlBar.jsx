@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CreateModal from "./Home/CreateModal";
 import { useState } from "react";
 
-function ControlBar() {
+function ControlBar(props) {
   const [creating, setCreating] = useState(false);
   return (
     <>
@@ -15,7 +15,7 @@ function ControlBar() {
         <Link to="/" className="home-btn hover-up">
           <FaHome />
         </Link>
-        <div className="menu-btn">
+        <div className="menu-btn" onClick={props.openMenu}>
           <FaBars />
         </div>
       </div>

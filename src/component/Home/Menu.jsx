@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 import "../../assets/css/home/Menu.css";
 
-function Menu() {
-  const [active, setActive] = useState(false);
+function Menu(props) {
   return (
-    <div
-      className={"menu " + (active ? "active" : "")}
-      onClick={() => setActive(true)}
-    ></div>
+    <div className="menu" onClick={() => setActive(true)}>
+      <FaTimes className="quit" onClick={props.quit}></FaTimes>
+
+      <div className="menu__item">Liên hệ</div>
+      <div className="menu__item">Github</div>
+    </div>
   );
 }
 
