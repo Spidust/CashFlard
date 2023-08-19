@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function SelectMenu(props) {
   return (
@@ -7,7 +8,9 @@ function SelectMenu(props) {
       <div className="select-menu">
         <FaTimes className="quit" onClick={props.quit}></FaTimes>
         <mt-4></mt-4>
-        <div className="select-menu__item">Play</div>
+        <Link className="select-menu__item" to="/play/1">
+          Play
+        </Link>
         <div className="select-menu__item">Edit</div>
         <div className="select-menu__item">Delete</div>
       </div>

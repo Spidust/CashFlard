@@ -76,6 +76,11 @@
   margin: auto;
   margin-top: 10px;
   cursor: pointer;
+
+  display: block;
+
+  color: white;
+  text-decoration: none;
 }
 
 .select-menu__item:hover {
