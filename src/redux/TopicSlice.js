@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const TopicSlice = createSlice({
-  name: "topics",
+  name: "topic",
   initialState: [],
   reducers: {
     addTopic: (state, action) => {
+      console.log(action.payload);
       state.push(action.payload);
     },
     removeTopic: (state, action) => {

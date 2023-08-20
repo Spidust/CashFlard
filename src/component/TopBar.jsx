@@ -1,12 +1,8 @@
-import React from 'react'
-import "../assets/css/TopBar.css"
+import React from "react";
+import "../assets/css/TopBar.css";
 
-function TopBar() {
-  return (
-    <div className='top-bar bar'>
-        CASH FLARD
-    </div>
-  )
+function TopBar(props) {
+  return <div className="top-bar bar">CASH FLARD</div>;
 }
 
-export default TopBar
+export default TopBar;
