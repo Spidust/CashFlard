@@ -1,18 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import TopicSlice from "./TopicSlice";
-
-// import storage from "redux-persist/lib/storage";
-// import { persistReducer, persistStore } from "redux-persist";
-
-// const persistConfig = {
-//   key: "root",
-//   storage,
-// };
-
-// const persistedTopicReducer = persistReducer(persistConfig, TopicSlice);
+import CardSlice from "./CardSlice";
 
 export const store = configureStore({
-  reducer: {
-    topic: TopicSlice,
-  },
+	reducer: {
+		topics: TopicSlice,
+		cards: CardSlice,
+	},
 });

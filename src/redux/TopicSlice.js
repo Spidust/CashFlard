@@ -1,22 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const TopicSlice = createSlice({
-  name: "topic",
-  initialState: [],
-  reducers: {
-    addTopic: (state, action) => {
-      console.log(action.payload);
-      state.push(action.payload);
-    },
-    removeTopic: (state, action) => {
-      state.splice(action.payload, 1);
-    },
-    updateTopic: (state, action) => {
-      state[state.indexOf(action.payload.id)] = action.payload.topic;
-    },
-  },
+	name: "topic",
+	initialState: {
+		value: [],
+	},
+	reducers: {
+		setTopics: (state, action) => {
+			state.value = [...action.payload];
+		},
+		addTopic: (state, action) => {
+			state.value.push(action.payload);
+		},
+		removeTopic: (state, action) => {
+			state.value.splice(action.payload, 1);
+		},
+		updateTopic: (state, action) => {
+			state.value[state.indexOf(action.payload.id)] =
+				action.payload.topic;
+		},
+	},
 });
 
-export const { addTopic, removeTopic, updateTopic } = TopicSlice.actions;
+export const { setTopics, addTopic, removeTopic, updateTopic } =
+	TopicSlice.actions;
 
 export default TopicSlice.reducer;
