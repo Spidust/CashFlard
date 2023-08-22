@@ -13,7 +13,7 @@ function Card({ card, ...props }) {
 		<ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
 			<Front
 				setFlipped={setFlipped}
-				image="https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0"
+				image={card.image}
 				question={card.question}
 				answer={card["answer-f"]}
 				type={card.type}
@@ -23,9 +23,10 @@ function Card({ card, ...props }) {
 
 			<Back
 				setFlipped={setFlipped}
-				image="https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0"
+				image={card.image}
 				question={card.question}
-				answer={card["answer-b"]}
+				answer-f={card["answer-f"]}
+				answer-b={card["answer-b"]}
 				input={input}
 				setCurrent={props.setCurrent}
 				length={props.length}
@@ -45,22 +46,12 @@ function Card({ card, ...props }) {
   "image": String,
 }
 
-  {
-    "question": "Gọi tên con này trong tiếng anh",
-    "answer-f": "leopard",
-    "answer-b": "leopard",
-    "type": "tl",
-    "image": "https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0",
-  }
-
 {
-  "question": "Gọi tên con này trong tiếng việt",
-  "answer-f": ["Báo", "Hổ", "Sư tử", "Ngựa vằn"],
-  "answer-b": "Báo",
-  "type": "tl",
+  "question": "Gọi tên con này trong tiếng anh",
+  "answer-f": ["leopard", "1", "2", "3"],
+  "answer-b": "leopard",
+  "type": "tn",
   "image": "https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0",
 }
-
 */
-
 export default Card;

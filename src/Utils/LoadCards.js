@@ -12,8 +12,12 @@ export default function LoadCards() {
 					i["answer-b"] &&
 					i.type &&
 					i.image
-				)
+				) {
+					if (i.type != "tl") {
+						i["answer-f"] = i["answer-f"].split(",");
+					}
 					return i;
+				}
 			});
 		}
 		return cards;

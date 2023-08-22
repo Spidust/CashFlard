@@ -19,10 +19,11 @@ function Back(props) {
 				</div>
 				<div className="card-question">{props.question}</div>
 
-				<div className="card-answer">{props.answer}</div>
+				<div className="card-answer">{props["answer-b"]}</div>
 
 				<div className="card-result">
-					{props.input == props.answer ? (
+					{props.input == props["answer-b"] ||
+					props["answer-f"][props.input] == props["answer-b"] ? (
 						<div className="right">
 							<FaCheck /> &nbsp; <h3>Bạn trả lời đúng rồi!</h3>
 						</div>
@@ -38,13 +39,7 @@ function Back(props) {
 				onClick={() => {
 					props.setFlipped(false);
 					props.setInput("");
-					setTimeout(
-						() =>
-							props.setCurrent(
-								HandleNext(props.index, props.length)
-							),
-						200
-					);
+					props.setCurrent(HandleNext(props.index, props.length));
 				}}
 			>
 				<FaCheck />
