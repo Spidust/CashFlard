@@ -8,11 +8,8 @@ function SelectMenu(props) {
 			<div className="select-menu">
 				<FaTimes className="quit" onClick={props.quit}></FaTimes>
 				<mt-4></mt-4>
-				<Link
-					className="select-menu__item"
-					to={"/play/" + props.selecting}
-				>
-					Play
+				<Link className="select-menu__item" to={props.selecting}>
+					{props.type == "categorie" ? "Enter" : "Play"}
 				</Link>
 				<div className="select-menu__item">Edit</div>
 				<div className="select-menu__item">Delete</div>

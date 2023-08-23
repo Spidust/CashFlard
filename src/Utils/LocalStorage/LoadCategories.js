@@ -1,5 +1,5 @@
-export default function LoadTopics() {
-	let topics = window.localStorage.getItem("topics");
+export default function LoadCategories() {
+	let topics = window.localStorage.getItem("categories");
 
 	try {
 		topics = JSON.parse(topics).map((i) => {

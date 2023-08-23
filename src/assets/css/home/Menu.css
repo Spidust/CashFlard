@@ -1,40 +1,40 @@
 .menu {
-  animation: appear 0.5s ease;
+	animation: appear 0.5s ease;
 
-  max-width: 398px;
-  max-height: 700px;
-  height: calc(100vh - 100px);
-  width: 100vw;
+	max-width: 398px;
+	max-height: 600px;
+	height: calc(100vh - 100px);
+	width: 100vw;
 
-  position: relative;
+	position: relative;
 
-  background-color: var(--primary-color);
+	background-color: var(--primary-color);
 }
 
 .menu .quit {
-  bottom: 0;
-  top: 90%;
+	bottom: 0;
+	top: 90%;
 
-  color: white;
+	color: white;
 }
 
 .menu__item {
-  display: flex;
-  padding: 10px 10px;
+	display: flex;
+	padding: 10px 10px;
 
-  color: white;
+	color: white;
 
-  cursor: pointer;
-  margin-bottom: 2px;
+	cursor: pointer;
+	margin-bottom: 2px;
 }
 
 @keyframes appear {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+	from {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }

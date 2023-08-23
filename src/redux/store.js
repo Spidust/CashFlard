@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import TopicSlice from "./TopicSlice";
+import CategorieSlice from "./CategorieSlice";
 import CardSlice from "./CardSlice";
+import TopicSlice from "./TopicSlice";
 
 export const store = configureStore({
 	reducer: {
-		topics: TopicSlice,
-		cards: CardSlice,
+		categorie: CategorieSlice,
+		card: CardSlice,
+		topic: TopicSlice,
 	},
 });
