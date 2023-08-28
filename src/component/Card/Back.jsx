@@ -1,16 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
-function HandleNext(index, length) {
-	let i = Math.floor(Math.random() * length);
-
-	while (i === index) {
-		i = Math.floor(Math.random() * length);
-	}
-	return i;
-}
-
 function Back(props) {
+	const result =
+		props.input == props["answer-b"] ||
+		props["answer-f"][props.input] == props["answer-b"];
+
 	return (
 		<div className="card__back">
 			<div className="card-content">
@@ -22,8 +17,7 @@ function Back(props) {
 				<div className="card-answer">{props["answer-b"]}</div>
 
 				<div className="card-result">
-					{props.input == props["answer-b"] ||
-					props["answer-f"][props.input] == props["answer-b"] ? (
+					{result ? (
 						<div className="right">
 							<FaCheck /> &nbsp; <h3>Bạn trả lời đúng rồi!</h3>
 						</div>
@@ -39,7 +33,14 @@ function Back(props) {
 				onClick={() => {
 					props.setFlipped(false);
 					props.setInput("");
-					props.setCurrent(HandleNext(props.index, props.length));
+					props.setIndexed(
+						Array.from(
+							new Set([
+								...props.indexed,
+								`${props.current}${result ? "d" : "s"}`,
+							])
+						)
+					);
 				}}
 			>
 				<FaCheck />

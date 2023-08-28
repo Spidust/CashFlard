@@ -8,9 +8,12 @@ import Back from "./Back";
 function Card({ card, ...props }) {
 	const [isFlipped, setFlipped] = useState(false);
 	const [input, setInput] = useState("");
-
 	return (
-		<ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+		<ReactCardFlip
+			isFlipped={isFlipped}
+			flipDirection="horizontal"
+			flipSpeedBackToFront={0.4}
+		>
 			<Front
 				setFlipped={setFlipped}
 				image={card.image}
@@ -28,30 +31,14 @@ function Card({ card, ...props }) {
 				answer-f={card["answer-f"]}
 				answer-b={card["answer-b"]}
 				input={input}
-				setCurrent={props.setCurrent}
+				setIndexed={props.setIndexed}
 				length={props.length}
 				setInput={setInput}
-				index={props.index}
+				indexed={props.indexed}
+				current={props.current}
 			/>
 		</ReactCardFlip>
 	);
 }
 
-/*
-{
-  "question": String,
-  "answer-f": String || Array,
-  "answer-b": String,
-  "type": String,
-  "image": String,
-}
-
-{
-  "question": "Gọi tên con này trong tiếng anh",
-  "answer-f": ["leopard", "1", "2", "3"],
-  "answer-b": "leopard",
-  "type": "tn",
-  "image": "https://th.bing.com/th/id/R.096a73c51ccc0a207b1598212cfcbde8?rik=0lpi1uw0f2C98A&pid=ImgRaw&r=0",
-}
-*/
 export default Card;
