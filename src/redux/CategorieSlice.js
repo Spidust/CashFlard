@@ -13,10 +13,10 @@ export const CategorieSlice = createSlice({
 			state.value.push(action.payload);
 		},
 		removeCategorie: (state, action) => {
-			state.value.splice(action.payload, 1);
+			return [...state.value.value.splice(action.payload, 1)];
 		},
 		updateCategorie: (state, action) => {
-			state.value[state.indexOf(action.payload.id)] =
+			state.value.value[state.indexOf(action.payload.id)] =
 				action.payload.Categorie;
 		},
 	},

@@ -23,11 +23,12 @@ function Play() {
 	let [indexed, setIndexed] = useState([]);
 
 	useEffect(() => {
-		if (cards.length != indexed.length)
+		if (cards.length != indexed.length) {
 			setTimeout(
 				() => setCurrent(HandleNext(indexed, cards.length)),
-				200
+				100
 			);
+		}
 	}, [indexed]);
 	return (
 		<div className="play">
