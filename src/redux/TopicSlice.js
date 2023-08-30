@@ -8,7 +8,14 @@ const TopicSlice = createSlice({
 			state[action.payload.id] = action.payload.Topics;
 		},
 		addTopic: (state, action) => {
-			state[action.payload.id].push(action.payload.Topic);
+			if (state[action.payload.id]) {
+				state[action.payload.id] = [
+					...state[action.payload.id],
+					action.payload.Topic,
+				];
+			} else {
+				state[action.payload.id] = [action.payload.Topic];
+			}
 		},
 		removeTopic: (state, action) => {
 			state[action.payload.id].splice(

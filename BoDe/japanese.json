@@ -1,0 +1,25 @@
+{
+	"hiragana": [
+		{
+			"question": "Chữ này là?",
+			"answer-f": "a",
+			"answer-b": "a",
+			"type": "tl",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Hiragana_letter_A.svg/640px-Hiragana_letter_A.svg.png"
+		},
+		{
+			"question": "Chữ này là?",
+			"answer-f": "i",
+			"answer-b": "i",
+			"type": "tl",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Hiragana_letter_I.svg/640px-Hiragana_letter_I.svg.png"
+		},
+		{
+			"question": "Chữ này là?",
+			"answer-f": "u",
+			"answer-b": "u",
+			"type": "tl",
+			"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Hiragana_letter_U.svg/640px-Hiragana_letter_U.svg.png"
+		}
+	]
+}

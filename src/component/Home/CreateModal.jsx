@@ -3,27 +3,44 @@ import "../../assets/css/home/CreateModal.css";
 import { FaTimes } from "react-icons/fa";
 import NewCategorie from "../../Utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
+import { addTopics } from "../../Utils/State/AddTopics";
 
-function HandleCreateCategorie(dispatch, name) {
+function HandleCreateCategorie(dispatch, name, quit) {
 	NewCategorie(dispatch, name);
+	quit();
+}
+
+function HandleAddTopic(parentId, data, dispatch, quit) {
+	addTopics(data, parentId, dispatch);
+	quit();
 }
 function CreateModal(props) {
 	const dispatch = useDispatch();
-	const [name, setName] = useState();
+	const [input, setInput] = useState();
 
 	return (
 		<div className="create-modal">
 			<FaTimes className="quit" onClick={props.quit}></FaTimes>
-			<label htmlFor="name-input">Tên: </label>
+			<label htmlFor="input">Tên: </label>
 			<input
 				type="text"
-				id="name-input"
-				value={name}
-				onChange={(e) => setName(e.target.value)}
+				id="input"
+				value={input}
+				onChange={(e) => setInput(e.target.value)}
 			/>
 			<button
 				className="create-btn"
-				onClick={() => HandleCreateCategorie(dispatch, name)}
+				onClick={() => {
+					if (props.type == "categorie")
+						HandleCreateCategorie(dispatch, input, props.quit);
+					else
+						HandleAddTopic(
+							window.location.href.split("/")[3],
+							JSON.parse(input),
+							dispatch,
+							props.quit
+						);
+				}}
 			>
 				Tạo
 			</button>

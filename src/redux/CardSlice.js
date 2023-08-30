@@ -8,7 +8,14 @@ const CardSlice = createSlice({
 			state[action.payload.id] = action.payload.cards;
 		},
 		addCard: (state, action) => {
-			state[action.payload.id].push(action.payload.card);
+			if (state[action.payload.id]) {
+				state[action.payload.id] = [
+					...state[action.payload.id],
+					action.payload.card,
+				];
+			} else {
+				state[action.payload.id] = [action.payload.card];
+			}
 		},
 		removeCard: (state, action) => {
 			state[action.payload.id].splice(
