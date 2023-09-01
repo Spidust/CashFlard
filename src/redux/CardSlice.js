@@ -23,6 +23,9 @@ const CardSlice = createSlice({
 				1
 			);
 		},
+		removeTopicCard: (state, action) => {
+			delete state[action.payload];
+		},
 		updateCard: (state, action) => {
 			state[action.payload.id][
 				state[action.payload.id].indexOf(action.payload.cardId)
@@ -30,6 +33,7 @@ const CardSlice = createSlice({
 		},
 	},
 });
-export const { setCards, addCard, removeCard, updateCard } = CardSlice.actions;
+export const { setCards, addCard, removeTopicCard, removeCard, updateCard } =
+	CardSlice.actions;
 
 export default CardSlice.reducer;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../assets/css/home/CreateModal.css";
 import { FaTimes } from "react-icons/fa";
 import NewCategorie from "../../Utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
@@ -19,7 +18,7 @@ function CreateModal(props) {
 	const [input, setInput] = useState();
 
 	return (
-		<div className="create-modal">
+		<div className="create-modal modal">
 			<FaTimes className="quit" onClick={props.quit}></FaTimes>
 			<label htmlFor="input">Tên: </label>
 			<input

@@ -9,19 +9,30 @@ import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TopicSet from "./component/Categorie/TopicSet";
 import LoadCategories from "./Utils/State/LoadCategories";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import LoadTopics from "./Utils/State/LoadTopics";
 import LoadCards from "./Utils/State/LoadCards";
+
+import SaveCards from "./Utils/LocalStorage/SaveCards";
+import SaveTopics from "./Utils/LocalStorage/SaveTopics";
+import SaveCategorie from "./Utils/LocalStorage/SaveCategories";
 
 function App() {
 	const [active, setActive] = useState(false);
 	const dispatch = useDispatch();
+	const state = useSelector((state) => state);
 	useEffect(() => {
 		LoadCategories(dispatch);
 		LoadTopics(dispatch);
 		LoadCards(dispatch);
 	}, []);
 
+	useEffect(() => {
+		SaveCards(state.card);
+		SaveCategorie(state.categorie.value);
+		SaveTopics(state.topic);
+	}, [state]);
 	return (
 		<div className="app">
 			<Router>

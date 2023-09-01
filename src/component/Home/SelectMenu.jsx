@@ -12,7 +12,12 @@ function SelectMenu(props) {
 					{props.type == "categorie" ? "Enter" : "Play"}
 				</Link>
 				<div className="select-menu__item">Edit</div>
-				<div className="select-menu__item">Delete</div>
+				<div
+					className="select-menu__item"
+					onClick={() => props.setDelete(props.selecting)}
+				>
+					Delete
+				</div>
 			</div>
 		</div>
 	);

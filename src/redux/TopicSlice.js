@@ -23,6 +23,9 @@ const TopicSlice = createSlice({
 				1
 			);
 		},
+		removeCategorieTopic: (state, action) => {
+			delete state[action.payload];
+		},
 		updateTopic: (state, action) => {
 			state[action.payload.id][
 				state[action.payload.id].indexOf(action.payload.TopicId)
@@ -30,7 +33,12 @@ const TopicSlice = createSlice({
 		},
 	},
 });
-export const { setTopics, addTopic, removeTopic, updateTopic } =
-	TopicSlice.actions;
+export const {
+	setTopics,
+	addTopic,
+	removeTopic,
+	removeCategorieTopic,
+	updateTopic,
+} = TopicSlice.actions;
 
 export default TopicSlice.reducer;

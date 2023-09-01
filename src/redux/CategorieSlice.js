@@ -13,7 +13,7 @@ export const CategorieSlice = createSlice({
 			state.value.push(action.payload);
 		},
 		removeCategorie: (state, action) => {
-			return [...state.value.value.splice(action.payload, 1)];
+			state.value.splice(action.payload, 1);
 		},
 		updateCategorie: (state, action) => {
 			state.value.value[state.indexOf(action.payload.id)] =
