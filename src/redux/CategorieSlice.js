@@ -15,14 +15,13 @@ export const CategorieSlice = createSlice({
 		removeCategorie: (state, action) => {
 			state.value.splice(action.payload, 1);
 		},
-		updateCategorie: (state, action) => {
-			state.value.value[state.indexOf(action.payload.id)] =
-				action.payload.Categorie;
+		renameCategorie: (state, action) => {
+			state.value[action.payload.index].name = action.payload.newName;
 		},
 	},
 });
 
-export const { setCategories, addCategorie, removeCategorie, updateCategorie } =
+export const { setCategories, addCategorie, removeCategorie, renameCategorie } =
 	CategorieSlice.actions;
 
 export default CategorieSlice.reducer;

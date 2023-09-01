@@ -49,7 +49,8 @@
 	padding: 20px 20px;
 }
 
-.create-modal {
+.create-modal,
+.rename-modal {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -74,7 +75,8 @@
 	padding: 5px 10px;
 }
 
-.create-btn {
+.create-btn,
+.rename-btn {
 	color: white;
 	background-color: rgb(65, 255, 65);
 
@@ -85,7 +87,8 @@
 	cursor: pointer;
 }
 
-.create-btn:hover {
+.create-btn:hover,
+.rename-btn:hover {
 	background-color: lime;
 }
 
