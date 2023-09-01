@@ -18,10 +18,7 @@ const TopicSlice = createSlice({
 			}
 		},
 		removeTopic: (state, action) => {
-			state[action.payload.id].splice(
-				state[action.payload.id].indexOf(action.payload.Topic),
-				1
-			);
+			state[action.payload.parentId].splice(action.payload.index, 1);
 		},
 		removeCategorieTopic: (state, action) => {
 			delete state[action.payload];

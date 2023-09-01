@@ -2,9 +2,12 @@ import React from "react";
 import { FaTimes } from "react-icons/fa";
 import DeleteCategorie from "./../../Utils/State/DeleteCategorie";
 import { useDispatch } from "react-redux";
+import DeleteTopic from "../../Utils/State/DeleteTopic";
 
 function BeforeDeleteModal(props) {
 	const dispatch = useDispatch();
+
+	const type = window.location.href.split("/")[3] ? "topic" : "categorie";
 	return (
 		<div className="delete-modal modal">
 			<FaTimes className="quit" onClick={() => props.quit(0)}></FaTimes>
@@ -14,7 +17,20 @@ function BeforeDeleteModal(props) {
 				onClick={() => {
 					props.quit(0);
 					props.quitSelect(0);
-					DeleteCategorie(dispatch, props.id);
+					switch (type) {
+						case "categorie":
+							DeleteCategorie(dispatch, props.id);
+							break;
+						case "topic":
+							DeleteTopic(
+								dispatch,
+								window.location.href.split("/")[3],
+								props.id
+							);
+							break;
+						default:
+							break;
+					}
 				}}
 			>
 				Xóa
