@@ -26,7 +26,7 @@ function Play() {
 		if (cards.length != indexed.length) {
 			setTimeout(
 				() => setCurrent(HandleNext(indexed, cards.length)),
-				100
+				200
 			);
 		}
 	}, [indexed]);
@@ -42,7 +42,11 @@ function Play() {
 					length={cards.length}
 				/>
 			) : (
-				<Result indexed={indexed} length={cards.length} />
+				<Result
+					indexed={indexed}
+					length={cards.length}
+					setIndexed={setIndexed}
+				/>
 			)}
 		</div>
 	);

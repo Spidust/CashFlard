@@ -30,9 +30,15 @@ function App() {
 
 	useEffect(() => {
 		SaveCards(state.card);
+	}, [state.card]);
+
+	useEffect(() => {
 		SaveCategorie(state.categorie.value);
+	}, [state.categorie.value]);
+
+	useEffect(() => {
 		SaveTopics(state.topic);
-	}, [state]);
+	}, [state.topic]);
 	return (
 		<div className="app">
 			<Router>

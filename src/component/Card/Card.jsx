@@ -36,6 +36,10 @@ function Card({ card, ...props }) {
 				setInput={setInput}
 				indexed={props.indexed}
 				current={props.current}
+				result={
+					input == card["answer-b"] ||
+					card["answer-f"][input] == card["answer-b"]
+				}
 			/>
 		</ReactCardFlip>
 	);

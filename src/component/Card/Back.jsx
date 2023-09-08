@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
 function Back(props) {
-	const result =
-		props.input == props["answer-b"] ||
-		props["answer-f"][props.input] == props["answer-b"];
-
 	return (
 		<div className="card__back">
 			<div className="card-content">
@@ -37,7 +33,7 @@ function Back(props) {
 						Array.from(
 							new Set([
 								...props.indexed,
-								`${props.current}${result ? "d" : "s"}`,
+								`${props.current}${props.result ? "d" : "s"}`,
 							])
 						)
 					);

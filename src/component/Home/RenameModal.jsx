@@ -2,9 +2,16 @@ import { useState } from "react";
 import RenameCategorie from "../../Utils/State/RenameCategorie";
 import { useDispatch } from "react-redux";
 import { FaTimes } from "react-icons/fa";
+import RenameTopic from "../../Utils/State/RenameTopic";
 
 function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
 	RenameCategorie(dispatch, newName, id);
+	quit();
+	quitSelect();
+}
+
+function HandleRenameTopic(dispatch, newName, parentId, id, quit, quitSelect) {
+	RenameTopic(dispatch, parentId, id, newName);
 	quit();
 	quitSelect();
 }
@@ -38,6 +45,15 @@ function RenameModal(props) {
 								props.quitSelect
 							);
 							break;
+						case "topic":
+							HandleRenameTopic(
+								dispatch,
+								input,
+								window.location.href.split("/")[3],
+								props.id,
+								props.quit,
+								props.quitSelect
+							);
 						default:
 							break;
 					}

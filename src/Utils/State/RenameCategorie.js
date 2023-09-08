@@ -12,7 +12,7 @@ export default function RenameCategorie(dispatch, newName, id) {
 			break;
 		}
 	}
-	if (index >= 0) {
+	if (index >= 0 && newName.length > 0) {
 		dispatch(renameCategorie({ index, newName }));
 	}
 }
