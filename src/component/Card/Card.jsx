@@ -12,7 +12,8 @@ function Card({ card, ...props }) {
 		<ReactCardFlip
 			isFlipped={isFlipped}
 			flipDirection="horizontal"
-			flipSpeedBackToFront={0.4}
+			flipSpeedBackToFront={0}
+			containerClassName={props.Change ? "change-action" : ""}
 		>
 			<Front
 				setFlipped={setFlipped}

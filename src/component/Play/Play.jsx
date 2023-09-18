@@ -22,18 +22,19 @@ function Play() {
 	);
 	let [indexed, setIndexed] = useState([]);
 
+	const [Change, setChange] = useState(false);
 	useEffect(() => {
 		if (cards.length != indexed.length) {
-			setTimeout(
-				() => setCurrent(HandleNext(indexed, cards.length)),
-				200
-			);
+			setCurrent(HandleNext(indexed, cards.length));
+			setChange(true);
+			setTimeout(() => setChange(false), 300);
 		}
 	}, [indexed]);
 	return (
 		<div className="play">
 			{cards.length != indexed.length ? (
 				<Card
+					Change={Change}
 					card={cards[current]}
 					setCurrent={setCurrent}
 					current={current}

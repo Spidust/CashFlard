@@ -39,11 +39,12 @@ function App() {
 	useEffect(() => {
 		SaveTopics(state.topic);
 	}, [state.topic]);
+
 	return (
 		<div className="app">
 			<Router>
 				<TopBar></TopBar>
-				{active && <Menu quit={() => setActive(false)} />}
+				<Menu active={active} quit={() => setActive(false)} />
 
 				<Routes>
 					<Route path="/">

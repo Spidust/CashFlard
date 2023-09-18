@@ -4,7 +4,7 @@ import "../../assets/css/home/Menu.css";
 
 function Menu(props) {
 	return (
-		<div className="menu">
+		<div className={"menu " + (props.active ? "active" : "")}>
 			<FaTimes className="quit" onClick={props.quit}></FaTimes>
 
 			<div className="menu__item">Liên hệ</div>

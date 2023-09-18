@@ -13,7 +13,7 @@ function Back(props) {
 				<div className="card-answer">{props["answer-b"]}</div>
 
 				<div className="card-result">
-					{result ? (
+					{props.result ? (
 						<div className="right">
 							<FaCheck /> &nbsp; <h3>Bạn trả lời đúng rồi!</h3>
 						</div>

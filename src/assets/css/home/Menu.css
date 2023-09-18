@@ -9,6 +9,14 @@
 	position: relative;
 
 	background-color: var(--primary-color);
+
+	z-index: 1;
+
+	display: none;
+}
+
+.menu.active {
+	display: block;
 }
 
 .menu .quit {
