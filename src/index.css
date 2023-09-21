@@ -52,8 +52,8 @@ html {
 	background-color: var(--primary-color);
 }
 
-.hover-up:hover {
-	transform: translateY(-5px);
+.hover-underline:hover {
+	text-decoration: underline;
 }
 
 mt-4 {

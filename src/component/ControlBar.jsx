@@ -13,7 +13,7 @@ function ControlBar(props) {
 				<div className="new-button" onClick={() => setCreating(true)}>
 					<FaPlus />
 				</div>
-				<Link to="/" className="home-btn hover-up">
+				<Link to="/" className="home-btn hover-underline">
 					<FaHome />
 				</Link>
 				<div className="menu-btn" onClick={props.openMenu}>

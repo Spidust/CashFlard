@@ -1,11 +1,10 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 function Item(props) {
 	return (
 		<div
-			className="item hover-up"
+			className="item hover-underline"
 			onClick={() => props.selectFunction(props.id)}
 		>
 			<h2 className="title">{props.name}</h2>
