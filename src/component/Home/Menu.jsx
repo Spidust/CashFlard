@@ -7,8 +7,14 @@ function Menu(props) {
 		<div className={"menu " + (props.active ? "active" : "")}>
 			<FaTimes className="quit" onClick={props.quit}></FaTimes>
 
-			<div className="menu__item">Liên hệ</div>
-			<div className="menu__item">Github</div>
+			<div className="menu__item">
+				<a href="https://github.com/Spidust/CashFlard">Github Dự Án</a>
+			</div>
+			<div className="menu__item">
+				<a href="https://www.facebook.com/profile.php?id=100085815830663">
+					Liên hệ facebook cá nhân
+				</a>
+			</div>
 		</div>
 	);
 }

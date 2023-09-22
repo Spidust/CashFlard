@@ -60,3 +60,22 @@ mt-4 {
 	display: block;
 	margin-top: 1.4rem;
 }
+
+button,
+input::file-selector-button {
+	padding: 8px;
+	color: white;
+	cursor: pointer;
+
+	border-radius: 5px;
+	border: none;
+}
+
+button {
+	background-color: var(--card-color);
+}
+
+input::file-selector-button {
+	background-color: white;
+	color: black;
+}

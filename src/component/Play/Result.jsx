@@ -16,6 +16,7 @@ function Result(props) {
 		>
 			Kết quả: <br />
 			{Right}/{props.length}
+			<br />
 			<button onClick={() => props.setIndexed([])}>Chơi lại</button>
 		</div>
 	);
