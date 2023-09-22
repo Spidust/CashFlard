@@ -1,7 +1,5 @@
-# Overview / Tổng quan
+### Tổng quan/Overview
 
-    Đây là một dự án cá nhân về Flash Card. Tính năng còn nhiều hạn chế và mức độ hoàn thiện chỉ mới là tương đối.
-    Mục lục:
-    [1. Hương dẫn sử dụng](#hdsd)
+Đây là một án cá nhân, tập trung về flash card. Hiện tại còn nhiều hạn chế trong tính năng và mức độ hoàn thiện chỉ mới là tương đối.
 
-# Hướng dẫn sử dụng {#hdsd}
+### Hướng dẫn sử dụng/Tutorial
