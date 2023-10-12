@@ -1,8 +1,8 @@
 .menu {
 	animation: appear 0.5s ease;
 
-	max-width: 398px;
-	max-height: 600px;
+	max-width: 498px;
+	max-height: 700px;
 	height: calc(100vh - 100px);
 	width: 100vw;
 
@@ -24,6 +24,7 @@
 	top: 90%;
 
 	color: white;
+	font-size: 2em;
 }
 
 .menu__item {

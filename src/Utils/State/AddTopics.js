@@ -1,12 +1,10 @@
 import { addCard } from "../../redux/CardSlice";
 import { addTopic } from "../../redux/TopicSlice";
-import SaveCards from "./../LocalStorage/SaveCards";
-import SaveTopics from "./../LocalStorage/SaveTopics";
-import { store } from "./../../redux/store";
+import { v4 as uuidv4 } from "uuid";
 
 export function addTopics(data, parentId, dispatch) {
 	for (const [key, value] of Object.entries(data)) {
-		const id = crypto.randomUUID();
+		const id = uuidv4();
 		dispatch(
 			addTopic({
 				id: parentId,

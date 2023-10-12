@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaCheck } from "react-icons/fa";
 
 function Front(props) {
@@ -13,7 +13,7 @@ function Front(props) {
 				{props.type == "tl" ? (
 					<input
 						className="card-input-tl"
-						style={{ width: props.answer.length * 16 }}
+						style={{ "--character": props.answer.length }}
 						value={props.input}
 						onChange={(e) =>
 							props.setInput(e.target.value.toLowerCase())

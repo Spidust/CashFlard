@@ -6,7 +6,6 @@ import { useState } from "react";
 
 function ControlBar(props) {
 	const [creating, setCreating] = useState(false);
-
 	return (
 		<>
 			<div className="control-bar bar">
@@ -25,7 +24,7 @@ function ControlBar(props) {
 				<CreateModal
 					quit={() => setCreating(false)}
 					type={
-						window.location.href.split("/")[3]
+						window.location.href.split("?")[0].split("/")[3]
 							? "topic"
 							: "categorie"
 					}

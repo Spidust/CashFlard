@@ -31,7 +31,6 @@ function WatchFileInput(setFileInput) {
 function CreateModal(props) {
 	const dispatch = useDispatch();
 	const [input, setInput] = useState();
-
 	useEffect(() => {
 		if (document.getElementById("file-input")) {
 			WatchFileInput(setInput);
@@ -61,7 +60,7 @@ function CreateModal(props) {
 						HandleCreateCategorie(dispatch, input, props.quit);
 					else
 						HandleAddTopic(
-							window.location.href.split("/")[3],
+							window.location.href.split("?")[0].split("/")[3],
 							JSON.parse(input),
 							dispatch,
 							props.quit

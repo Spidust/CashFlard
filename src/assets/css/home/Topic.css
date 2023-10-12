@@ -15,10 +15,10 @@
 	position: absolute;
 	bottom: 0;
 
-	height: 40%;
+	height: fit-content;
 	width: 90%;
 	margin: auto;
-
+	padding-bottom: 20px;
 	background-color: rgb(46, 161, 255);
 	color: white;
 

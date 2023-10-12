@@ -21,7 +21,9 @@ function RenameModal(props) {
 
 	const dispatch = useDispatch();
 
-	const type = window.location.href.split("/")[3] ? "topic" : "categorie";
+	const type = window.location.href.split("?")[0].split("/")[3]
+		? "topic"
+		: "categorie";
 	return (
 		<div className="rename-modal modal">
 			<FaTimes className="quit" onClick={() => props.quit(0)}></FaTimes>
@@ -49,7 +51,9 @@ function RenameModal(props) {
 							HandleRenameTopic(
 								dispatch,
 								input,
-								window.location.href.split("/")[3],
+								window.location.href
+									.split("?")[0]
+									.split("/")[3],
 								props.id,
 								props.quit,
 								props.quitSelect
