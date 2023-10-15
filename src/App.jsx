@@ -8,15 +8,15 @@ import CategorieSet from "./component/Home/CategorieSet";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import TopicSet from "./component/Categorie/TopicSet";
-import LoadCategories from "./Utils/State/LoadCategories";
+import LoadCategories from "./utils/State/LoadCategories";
 import { useDispatch, useSelector } from "react-redux";
 
-import LoadTopics from "./Utils/State/LoadTopics";
-import LoadCards from "./Utils/State/LoadCards";
+import LoadTopics from "./utils/State/LoadTopics";
+import LoadCards from "./utils/State/LoadCards";
 
-import SaveCards from "./Utils/LocalStorage/SaveCards";
-import SaveTopics from "./Utils/LocalStorage/SaveTopics";
-import SaveCategorie from "./Utils/LocalStorage/SaveCategories";
+import SaveCards from "./utils/LocalStorage/SaveCards";
+import SaveTopics from "./utils/LocalStorage/SaveTopics";
+import SaveCategorie from "./utils/LocalStorage/SaveCategories";
 
 function App() {
 	const [active, setActive] = useState(false);

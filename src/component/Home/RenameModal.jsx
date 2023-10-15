@@ -1,8 +1,8 @@
 import { useState } from "react";
-import RenameCategorie from "../../Utils/State/RenameCategorie";
+import RenameCategorie from "../../utils/State/RenameCategorie";
 import { useDispatch } from "react-redux";
 import { FaTimes } from "react-icons/fa";
-import RenameTopic from "../../Utils/State/RenameTopic";
+import RenameTopic from "../../utils/State/RenameTopic";
 
 function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
 	RenameCategorie(dispatch, newName, id);

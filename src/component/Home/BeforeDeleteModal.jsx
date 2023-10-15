@@ -1,8 +1,8 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import DeleteCategorie from "./../../Utils/State/DeleteCategorie";
+import DeleteCategorie from "./../../utils/State/DeleteCategorie";
 import { useDispatch } from "react-redux";
-import DeleteTopic from "../../Utils/State/DeleteTopic";
+import DeleteTopic from "../../utils/State/DeleteTopic";
 
 function BeforeDeleteModal(props) {
 	const dispatch = useDispatch();

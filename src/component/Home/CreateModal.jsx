@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import NewCategorie from "../../Utils/State/NewCategorie";
+import NewCategorie from "../../utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
-import { addTopics } from "../../Utils/State/AddTopics";
+import { addTopics } from "../../utils/State/AddTopics";
 
 function HandleCreateCategorie(dispatch, name, quit) {
 	NewCategorie(dispatch, name);
