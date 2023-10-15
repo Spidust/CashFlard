@@ -1,5 +1,5 @@
 import { renameTopic } from "../../redux/TopicSlice";
-import { store } from "./../../redux/store";
+import { store } from "../../redux/store";
 export default function RenameTopic(dispatch, parentId, id, newName) {
 	const state = store.getState();
 	const topic = state.topic[parentId];
