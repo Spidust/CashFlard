@@ -3,7 +3,7 @@ import { store } from "../../redux/store";
 export default function (id) {
 	const categorie = store.getState().categorie.value;
 
-	for (let i in categorie) {
+	for (let i of categorie) {
 		if (i.id == id) {
 			return i.name;
 		}
