@@ -8,5 +8,5 @@ export default function (id) {
 			return i.name;
 		}
 	}
-	return `404 not found, hãy về trang chủ`;
+	return `Hãy về trang chủ`;
 }
