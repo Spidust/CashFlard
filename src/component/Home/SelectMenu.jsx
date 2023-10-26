@@ -1,16 +1,25 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SelectMenu(props) {
+	const navigate = useNavigate();
+
 	return (
 		<div className="select-menu-overlay">
 			<div className="select-menu">
 				<FaTimes className="quit" onClick={props.quit}></FaTimes>
 				<mt-4></mt-4>
-				<Link className="select-menu__item" to={props.selecting}>
+				<div
+					className="select-menu__item"
+					onClick={() =>
+						props.type == "categorie"
+							? navigate("/" + props.selecting)
+							: props.play(props.selecting)
+					}
+				>
 					{props.type == "categorie" ? "Enter" : "Play"}
-				</Link>
+				</div>
 				<div
 					className="select-menu__item"
 					onClick={() => props.setEdit(props.selecting)}

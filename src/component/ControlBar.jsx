@@ -1,7 +1,7 @@
 import { FaPlus, FaBars, FaHome } from "react-icons/fa";
 import "../assets/css/ControlBar.css";
 import { Link } from "react-router-dom";
-import CreateModal from "./Home/CreateModal";
+import CreateModal from "./Modal/CreateModal";
 import { useState } from "react";
 
 function ControlBar(props) {
@@ -12,7 +12,7 @@ function ControlBar(props) {
 				<div className="new-button" onClick={() => setCreating(true)}>
 					<FaPlus />
 				</div>
-				<Link to="/" className="home-btn hover-underline">
+				<Link to={"/"} className="home-btn hover-underline">
 					<FaHome />
 				</Link>
 				<div className="menu-btn" onClick={props.openMenu}>

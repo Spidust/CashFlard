@@ -3,14 +3,15 @@ import ControlBar from "./component/ControlBar";
 import TopBar from "./component/TopBar";
 import Menu from "./component/Home/Menu";
 import Play from "./component/Play/Play";
-import CategorieSet from "./component/Home/CategorieSet";
 
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TopicSet from "./component/Categorie/TopicSet";
-import LoadCategories from "./utils/State/LoadCategories";
 import { useDispatch, useSelector } from "react-redux";
 
+import TopicSet from "./component/Categorie/TopicSet";
+import CategorieSet from "./component/Home/CategorieSet";
+
+import LoadCategories from "./utils/State/LoadCategories";
 import LoadTopics from "./utils/State/LoadTopics";
 import LoadCards from "./utils/State/LoadCards";
 
@@ -22,6 +23,7 @@ function App() {
 	const [active, setActive] = useState(false);
 	const dispatch = useDispatch();
 	const state = useSelector((state) => state);
+
 	useEffect(() => {
 		LoadCategories(dispatch);
 		LoadTopics(dispatch);

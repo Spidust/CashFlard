@@ -4,13 +4,15 @@ import "../assets/css/home/Topic.css";
 import "../assets/css/Items.css";
 import SelectMenu from "./Home/SelectMenu";
 import { Navigate } from "react-router-dom";
-import BeforeDeleteModal from "./Home/BeforeDeleteModal";
-import RenameModal from "./Home/RenameModal";
+import BeforeDeleteModal from "./Modal/BeforeDeleteModal";
+import RenameModal from "./Modal/RenameModal";
+import BeforePlayModal from "./Modal/BeforePlayModal";
 
 function Sets(props) {
 	const [selecting, Select] = useState(0);
 	const [Delete, setDelete] = useState(0);
 	const [Edit, setEdit] = useState(0);
+	const [Play, setPlay] = useState(0);
 
 	return (
 		<>
@@ -39,6 +41,7 @@ function Sets(props) {
 							data={props.data}
 							setDelete={setDelete}
 							setEdit={setEdit}
+							play={setPlay}
 						/>
 					) : (
 						""
@@ -59,6 +62,16 @@ function Sets(props) {
 							quit={setEdit}
 							quitSelect={Select}
 							id={Edit}
+						/>
+					) : (
+						""
+					)}
+
+					{Play ? (
+						<BeforePlayModal
+							quit={setPlay}
+							id={selecting}
+							quitSelect={Select}
 						/>
 					) : (
 						""

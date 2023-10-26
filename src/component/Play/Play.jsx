@@ -4,6 +4,16 @@ import "../../assets/css/play/Play.css";
 import { useSelector } from "react-redux";
 import Result from "./Result";
 
+import { useParams } from "react-router-dom";
+
+function duplicateItems(arr, numberOfRepetitions) {
+	if (arr != null) {
+		return arr.flatMap((i) =>
+			Array.from({ length: numberOfRepetitions }).fill(i)
+		);
+	} else return [];
+}
+
 function HandleNext(indexed, length) {
 	let i = Math.floor(Math.random() * length);
 
@@ -15,8 +25,16 @@ function HandleNext(indexed, length) {
 }
 
 function Play() {
-	const id = window.location.href.split("/")[4];
-	const cards = useSelector((state) => state.card[id]) || [];
+	const id = window.location.href.split("?")[0].split("/")[4];
+	const { duplicate } = useParams();
+
+	const cards =
+		useSelector((state) => {
+			return duplicateItems(
+				state.card[id],
+				duplicate > 0 ? duplicate : 2
+			);
+		}) || [];
 	const [current, setCurrent] = useState(
 		Math.floor(Math.random() * cards.length)
 	);
