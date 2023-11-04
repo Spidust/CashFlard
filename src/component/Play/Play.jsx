@@ -6,12 +6,10 @@ import Result from "./Result";
 
 import { useParams } from "react-router-dom";
 
-function duplicateItems(arr, numberOfRepetitions) {
-	if (arr != null) {
-		return arr.flatMap((i) =>
-			Array.from({ length: numberOfRepetitions }).fill(i)
-		);
-	} else return [];
+function duplicateItems(arr = [], numberOfRepetitions) {
+	return arr.flatMap((i) =>
+		Array.from({ length: numberOfRepetitions }).fill(i)
+	);
 }
 
 function HandleNext(indexed, length) {
