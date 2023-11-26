@@ -4,7 +4,7 @@ import "../../assets/css/play/Play.css";
 import { useSelector } from "react-redux";
 import Result from "./Result";
 
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function duplicateItems(arr = [], numberOfRepetitions) {
 	return arr.flatMap((i) =>
@@ -24,15 +24,18 @@ function HandleNext(indexed, length) {
 
 function Play() {
 	const id = window.location.href.split("?")[0].split("/")[4];
-	const { duplicate } = useParams();
+	const [searchParams, setSearchParams] = useSearchParams();
+	const duplicate = searchParams.get("duplicate");
+	console.log(duplicate);
 
 	const cards =
 		useSelector((state) => {
 			return duplicateItems(
 				state.card[id],
-				duplicate > 0 ? duplicate : 2
+				duplicate > 0 ? Number(duplicate) : 2
 			);
 		}) || [];
+
 	const [current, setCurrent] = useState(
 		Math.floor(Math.random() * cards.length)
 	);

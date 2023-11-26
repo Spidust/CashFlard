@@ -8,6 +8,7 @@ import Back from "./Back";
 function Card({ card, ...props }) {
 	const [isFlipped, setFlipped] = useState(false);
 	const [input, setInput] = useState("");
+
 	return (
 		<ReactCardFlip
 			isFlipped={isFlipped}
