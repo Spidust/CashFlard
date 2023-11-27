@@ -3,8 +3,19 @@ import { FaTimes } from "react-icons/fa";
 import NewCategorie from "../../utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
 import { addTopics } from "../../utils/State/AddTopics";
+import ValidateCategorieName from "../../utils/Validate/ValidateCategorieName";
 
 function HandleCreateCategorie(dispatch, name, quit) {
+	switch (ValidateCategorieName(name)) {
+		case 0:
+			alert("Tên không được để trống");
+			return;
+		case 1:
+			alert("tên bị trùng");
+			return;
+		default:
+			break;
+	}
 	NewCategorie(dispatch, name);
 	quit();
 }
