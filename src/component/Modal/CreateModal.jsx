@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import NewCategorie from "../../utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
 import { addTopics } from "../../utils/State/AddTopics";
-import ValidateCategorieName from "../../utils/Validate/ValidateCategorieName";
+import ValidateCategorieName from "../../utils/Validate/ValidateCategorieName.js";
 
 function HandleCreateCategorie(dispatch, name, quit) {
 	switch (ValidateCategorieName(name)) {
