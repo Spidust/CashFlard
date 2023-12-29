@@ -11,7 +11,7 @@ function HandleCreateCategorie(dispatch, name, quit) {
 			alert("Tên không được để trống");
 			return;
 		case 1:
-			alert("tên bị trùng");
+			alert("Tên không được trùng");
 			return;
 		default:
 			break;

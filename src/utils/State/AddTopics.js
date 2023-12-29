@@ -2,7 +2,6 @@ import { addCard } from "../../redux/CardSlice";
 import { addTopic } from "../../redux/TopicSlice";
 import { v4 as uuidv4 } from "uuid";
 import ValidateTopicName from "../Validate/ValidateTopicName";
-import DeleteTopic from "./DeleteTopic";
 
 export function addTopics(data, parentId, dispatch) {
 	for (const [key, value] of Object.entries(data)) {
