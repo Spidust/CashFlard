@@ -2,16 +2,16 @@ import { store } from "../../redux/store";
 
 export default function ValidateTopicName(name, parentId) {
 	if (!name || !parentId) {
-		return true;
+		return 1;
 	}
 
 	const topic = store.getState().topic[parentId];
 
 	for (let value of topic) {
 		if (value.name == name) {
-			return false;
+			return 0;
 		}
 	}
 
-	return true;
+	return 2;
 }
