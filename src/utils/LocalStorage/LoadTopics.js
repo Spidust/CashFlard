@@ -13,7 +13,6 @@ export default function LoadTopics() {
 		}
 		return topics;
 	} catch (e) {
-		console.log(e);
 		return {};
 	}
 }

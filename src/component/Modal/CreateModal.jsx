@@ -81,7 +81,6 @@ function CreateModal(props) {
 								props.quit
 							);
 						} catch (e) {
-							console.log(e);
 							alert("Đầu vào không hợp lệ");
 						}
 					}
