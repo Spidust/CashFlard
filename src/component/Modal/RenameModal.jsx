@@ -5,11 +5,10 @@ import { FaTimes } from "react-icons/fa";
 import RenameCategorie from "../../utils/State/RenameCategorie";
 import RenameTopic from "../../utils/State/RenameTopic";
 
-import ValidateCategorieName from "./../../utils/Validate/ValidateCategorieName";
-import ValidateTopicName from "../../utils/Validate/ValidateTopicName";
+import Validate from "../../utils/Validate/Validate";
 
 function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
-	switch (ValidateCategorieName(newName)) {
+	switch (Validate.CategorieName(newName)) {
 		case 0:
 			alert("Tên không được để trống");
 			return;
@@ -25,7 +24,7 @@ function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
 }
 
 function HandleRenameTopic(dispatch, newName, parentId, id, quit, quitSelect) {
-	switch (ValidateTopicName(newName, parentId)) {
+	switch (Validate.TopicName(newName, parentId)) {
 		case 0:
 			alert("Tên không được trùng");
 			return;

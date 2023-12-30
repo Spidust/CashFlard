@@ -3,10 +3,10 @@ import { FaTimes } from "react-icons/fa";
 import NewCategorie from "../../utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
 import { addTopics } from "../../utils/State/AddTopics";
-import ValidateCategorieName from "../../utils/Validate/ValidateCategorieName.js";
+import Validate from "../../utils/Validate/Validate.js";
 
 function HandleCreateCategorie(dispatch, name, quit) {
-	switch (ValidateCategorieName(name)) {
+	switch (Validate.CategorieName(name)) {
 		case 0:
 			alert("Tên không được để trống");
 			return;
@@ -69,13 +69,22 @@ function CreateModal(props) {
 				onClick={() => {
 					if (props.type == "categorie")
 						HandleCreateCategorie(dispatch, input, props.quit);
-					else
-						HandleAddTopic(
-							window.location.href.split("?")[0].split("/")[3],
-							JSON.parse(input),
-							dispatch,
-							props.quit
-						);
+					else {
+						try {
+							const data = JSON.parse(input);
+							HandleAddTopic(
+								window.location.href
+									.split("?")[0]
+									.split("/")[3],
+								data,
+								dispatch,
+								props.quit
+							);
+						} catch (e) {
+							console.log(e);
+							alert("Đầu vào không hợp lệ");
+						}
+					}
 				}}
 			>
 				{props.type == "categorie" ? "Tạo" : "Thêm"}

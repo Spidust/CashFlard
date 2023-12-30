@@ -16,8 +16,10 @@ export default function DeleteCategorie(dispatch, id) {
 	}
 	if (index >= 0) {
 		dispatch(removeCategorie(index));
-		for (let i of state.topic[id]) {
-			dispatch(removeTopicCard(i.id));
+		if (state.topic[id]) {
+			for (let i of state.topic[id]) {
+				dispatch(removeTopicCard(i.id));
+			}
 		}
 		dispatch(removeCategorieTopic(id));
 	}

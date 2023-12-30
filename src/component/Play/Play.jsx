@@ -26,7 +26,6 @@ function Play() {
 	const id = window.location.href.split("?")[0].split("/")[4];
 	const [searchParams, setSearchParams] = useSearchParams();
 	const duplicate = searchParams.get("duplicate");
-	console.log(duplicate);
 
 	const cards =
 		useSelector((state) => {

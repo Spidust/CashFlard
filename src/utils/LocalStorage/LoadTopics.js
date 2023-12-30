@@ -6,7 +6,7 @@ export default function LoadTopics() {
 		topics = {};
 		for (const [key, value] of Object.entries(TopicsPre)) {
 			topics[key] = value.map((i) => {
-				if (i.id && i.name) {
+				if (i && i.id && i.name) {
 					return i;
 				}
 			});

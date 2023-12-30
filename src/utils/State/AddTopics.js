@@ -1,34 +1,44 @@
 import { addCard } from "../../redux/CardSlice";
 import { addTopic } from "../../redux/TopicSlice";
 import { v4 as uuidv4 } from "uuid";
-import ValidateTopicName from "../Validate/ValidateTopicName";
+import Validate from "../Validate/Validate";
 
 export function addTopics(data, parentId, dispatch) {
 	for (const [key, value] of Object.entries(data)) {
-		const id = uuidv4();
+		let validateJsonStruct = true;
+		for (let i of value)
+			if (!Validate.JSONStructure(i)) {
+				alert("Đề " + key + " bị lỗi");
+				validateJsonStruct = false;
+				break;
+			}
 
-		let validatedNameResult = ValidateTopicName(key, parentId);
-		let name = key;
-		let i = 0;
+		if (validateJsonStruct) {
+			const id = uuidv4();
 
-		while (!validatedNameResult) {
-			i += 1;
-			name = `${key} ${i}`;
-			validatedNameResult = ValidateTopicName(name, parentId);
-		}
+			let validatedNameResult = Validate.TopicName(key, parentId);
+			let name = key;
+			let i = 0;
 
-		dispatch(
-			addTopic({
-				id: parentId,
-				Topic: {
-					id,
-					name: name,
-				},
-			})
-		);
+			while (!validatedNameResult) {
+				i += 1;
+				name = `${key} ${i}`;
+				validatedNameResult = Validate.TopicName(name, parentId);
+			}
 
-		for (const i of value) {
-			dispatch(addCard({ id, card: i }));
+			dispatch(
+				addTopic({
+					id: parentId,
+					Topic: {
+						id,
+						name: name,
+					},
+				})
+			);
+
+			for (const i of value) {
+				dispatch(addCard({ id, card: i }));
+			}
 		}
 	}
 }

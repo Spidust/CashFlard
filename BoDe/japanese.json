@@ -1,7 +1,6 @@
 {
 	"hiragana": [
 		{
-			"question": "Chữ này là?",
 			"answer-f": "a",
 			"answer-b": "a",
 			"type": "tl",
