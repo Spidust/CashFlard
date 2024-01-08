@@ -19,7 +19,7 @@ function Sets(props) {
 			{!props.data ? (
 				<Navigate />
 			) : (
-				<div className="sets">
+				<>
 					<div className="items">
 						{props.data.map((topic, index) => {
 							return (
@@ -76,7 +76,7 @@ function Sets(props) {
 					) : (
 						""
 					)}
-				</div>
+				</>
 			)}
 		</>
 	);

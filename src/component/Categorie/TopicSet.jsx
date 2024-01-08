@@ -12,7 +12,7 @@ function TopicSet() {
 	}
 	const topics = useSelector((state) => state.topic[id]);
 	return (
-		<div className="topics">
+		<div className="topics sets">
 			<Sets data={topics} type="topic" />
 		</div>
 	);

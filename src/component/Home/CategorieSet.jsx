@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function CategorieSet() {
 	const categories = useSelector((state) => state.categorie.value);
 	return (
-		<div className="categorie-set">
+		<div className="categorie-set sets">
 			<Sets data={categories} type="categorie" />
 		</div>
 	);
