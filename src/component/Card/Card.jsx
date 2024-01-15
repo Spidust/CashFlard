@@ -39,8 +39,11 @@ function Card({ card, ...props }) {
 				indexed={props.indexed}
 				current={props.current}
 				result={
-					input == card["answer-b"] ||
-					card["answer-f"][input] == card["answer-b"]
+					card.type == "tl"
+						? input == card["answer-b"]
+						: card.type == "tn"
+						? card["answer-f"].split(",")[input] == card["answer-b"]
+						: false
 				}
 			/>
 		</ReactCardFlip>

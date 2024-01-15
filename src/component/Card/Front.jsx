@@ -19,9 +19,9 @@ function Front(props) {
 							props.setInput(e.target.value.toLowerCase())
 						}
 					></input>
-				) : (
+				) : props.type == "tn" ? (
 					<div className="card-input-tn">
-						{props.answer.map((item, index) => {
+						{props.answer.split(",").map((item, index) => {
 							return (
 								<div
 									className={
@@ -39,6 +39,8 @@ function Front(props) {
 							);
 						})}
 					</div>
+				) : (
+					""
 				)}
 			</div>
 
