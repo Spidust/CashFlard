@@ -5,12 +5,12 @@ import { validate } from "uuid";
 import { Navigate } from "react-router-dom";
 
 function TopicSet() {
-	const id = window.location.href.split("?")[0].split("/")[3];
+	const ID = window.location.href.split("?")[0].split("/")[3];
 
-	if (!validate(id)) {
+	if (!validate(ID)) {
 		return <Navigate to="/" />;
 	}
-	const topics = useSelector((state) => state.topic[id]);
+	const topics = useSelector((state) => state.topic[ID]);
 	return (
 		<div className="topics sets">
 			<Sets data={topics} type="topic" />
