@@ -40,6 +40,8 @@
 }
 .card-image img {
 	max-height: 100%;
+	max-width: 100%;
+	object-fit: cover;
 	width: 100%;
 }
 .card-question {
