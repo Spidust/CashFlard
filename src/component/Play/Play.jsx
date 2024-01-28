@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Result from "./Result";
 
 import { useSearchParams } from "react-router-dom";
+import { v4 } from "uuid";
 
 function duplicateItems(arr = [], numberOfRepetitions) {
 	return arr.flatMap((i) =>
@@ -56,7 +57,7 @@ function Play() {
 			{cards.length != indexed.length ? (
 				<Card
 					Change={Change}
-					card={cards[current]}
+					card={{ ...cards[current], id: v4() }}
 					setCurrent={setCurrent}
 					current={current}
 					indexed={indexed}

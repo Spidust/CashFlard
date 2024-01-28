@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
+import randomizeAnswer from "../../utils/randomizeAnswer";
 
 import "../../assets/css/Card.css";
 import Front from "./Front";
@@ -8,45 +9,61 @@ import Back from "./Back";
 function Card({ card, ...props }) {
 	const [isFlipped, setFlipped] = useState(false);
 	const [input, setInput] = useState("");
+	const [editedCard, setEditedCard] = useState();
 
+	useEffect(() => {
+		setEditedCard(card);
+		if (card.type == "tn") {
+			setEditedCard((prev) => {
+				const copy = { ...prev };
+				copy["answer-f"] = randomizeAnswer(prev["answer-f"]);
+				return copy;
+			});
+		}
+	}, [card]);
 	return (
-		<ReactCardFlip
-			isFlipped={isFlipped}
-			flipDirection="horizontal"
-			flipSpeedBackToFront={0}
-			containerClassName={props.Change ? "change-action" : ""}
-		>
-			<Front
-				setFlipped={setFlipped}
-				image={card.image}
-				question={card.question}
-				answer={card["answer-f"]}
-				type={card.type}
-				input={input}
-				setInput={setInput}
-			/>
+		<>
+			{editedCard && (
+				<ReactCardFlip
+					isFlipped={isFlipped}
+					flipDirection="horizontal"
+					flipSpeedBackToFront={0}
+					containerClassName={props.Change ? "change-action" : ""}
+				>
+					<Front
+						setFlipped={setFlipped}
+						image={editedCard.image}
+						question={editedCard.question}
+						answer={editedCard["answer-f"]}
+						type={editedCard.type}
+						input={input}
+						setInput={setInput}
+					/>
 
-			<Back
-				setFlipped={setFlipped}
-				image={card.image}
-				question={card.question}
-				answer-f={card["answer-f"]}
-				answer-b={card["answer-b"]}
-				input={input}
-				setIndexed={props.setIndexed}
-				length={props.length}
-				setInput={setInput}
-				indexed={props.indexed}
-				current={props.current}
-				result={
-					card.type == "tl"
-						? input == card["answer-b"]
-						: card.type == "tn"
-						? card["answer-f"].split(",")[input] == card["answer-b"]
-						: false
-				}
-			/>
-		</ReactCardFlip>
+					<Back
+						setFlipped={setFlipped}
+						image={editedCard.image}
+						question={editedCard.question}
+						answer-f={editedCard["answer-f"]}
+						answer-b={editedCard["answer-b"]}
+						input={input}
+						setIndexed={props.setIndexed}
+						length={props.length}
+						setInput={setInput}
+						indexed={props.indexed}
+						current={props.current}
+						result={
+							editedCard.type == "tl"
+								? input == editedCard["answer-b"]
+								: editedCard.type == "tn"
+								? editedCard["answer-f"].split(",")[input] ==
+								  editedCard["answer-b"]
+								: false
+						}
+					/>
+				</ReactCardFlip>
+			)}
+		</>
 	);
 }
 
