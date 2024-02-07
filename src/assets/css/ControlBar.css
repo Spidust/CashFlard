@@ -33,6 +33,7 @@
 
 	cursor: pointer;
 }
+
 .control-bar .home-btn::before {
 	content: "";
 	position: absolute;

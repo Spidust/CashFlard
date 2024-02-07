@@ -12,7 +12,7 @@ function TopBar() {
 	}, [location]);
 	return (
 		<div className="top-bar bar">
-			CASH FLARD - {id ? GetCategorieName(id) : "Trang chủ"}
+			<span>CASH FLARD - {id ? GetCategorieName(id) : "Trang chủ"}</span>
 		</div>
 	);
 }

@@ -6,3 +6,9 @@
 	display: flex;
 	align-items: center;
 }
+.top-bar span {
+	background: linear-gradient(to left, #43e3ff, #00ffdd);
+	display: inline-block;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
