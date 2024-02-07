@@ -6,8 +6,7 @@
 	height: calc(100vh - 100px);
 	width: 100vw;
 
-	position: relative;
-
+	position: fixed;
 	background-color: var(--primary-color);
 
 	z-index: 1;

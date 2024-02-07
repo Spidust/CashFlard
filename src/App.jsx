@@ -57,7 +57,10 @@ function App() {
 						</Route>
 					</Route>
 				</Routes>
-				<ControlBar openMenu={() => setActive(true)}></ControlBar>
+				<ControlBar
+					openMenu={() => setActive(true)}
+					active={active}
+				></ControlBar>
 			</Router>
 		</div>
 	);
