@@ -51,13 +51,17 @@ function CreateModal(props) {
 		<div className="create-modal modal">
 			<FaTimes className="quit" onClick={props.quit}></FaTimes>
 			<label htmlFor="input">
-				{props.type == "categorie" ? "Tên" : "JSON"}:{" "}
+				{props.type == "categorie"
+					? "Nhập tên bộ đề"
+					: "Nhập dữ liệu của 4 đề"}
+				:{" "}
 			</label>
 			<input
 				type="text"
 				id="input"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
+				placeholder={props.type == "categorie" ? "Tên" : "JSON"}
 			/>
 			{props.type == "categorie" ? (
 				""

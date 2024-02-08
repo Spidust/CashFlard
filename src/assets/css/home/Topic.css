@@ -7,19 +7,17 @@
 
 	width: 100%;
 	height: calc(100% - 100px);
-	background-color: rgba(3, 3, 3, 0.3);
-	animation: background 0.2s;
 }
 
 .select-menu {
 	position: absolute;
-	bottom: 0;
+	bottom: 5%;
 
 	height: fit-content;
 	width: 90%;
 	margin: auto;
 	padding-bottom: 20px;
-	background-color: rgb(46, 161, 255);
+	background-color: var(--modal-color);
 	color: white;
 
 	border-radius: 15px;
@@ -54,7 +52,7 @@
 	transform: translateY(-5px);
 	transition: all 0.2s;
 
-	background-color: rgb(34, 167, 255);
+	background-color: rgb(34, 212, 168);
 }
 
 @keyframes background {
