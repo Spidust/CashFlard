@@ -12,6 +12,8 @@
 
 	font-size: 1.5rem;
 	font-weight: bold;
+
+	z-index: -1;
 }
 .result.good {
 	color: rgb(20, 204, 20);
