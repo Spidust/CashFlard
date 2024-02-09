@@ -1,12 +1,11 @@
 .menu {
 	animation: appear 0.5s ease;
 
-	max-width: 498px;
-	max-height: 700px;
-	height: calc(100vh - 100px);
-	width: 100vw;
+	height: calc(100% - 100px);
+	width: 80%;
 
-	position: fixed;
+	position: absolute;
+	left: 20%;
 	background-color: var(--primary-color);
 	z-index: 0;
 	display: none;
@@ -25,23 +24,26 @@
 }
 
 .menu__item {
-	display: flex;
-	padding: 10px 10px;
-
-	color: white;
+	padding: 13px;
 
 	cursor: pointer;
-	margin-bottom: 2px;
 }
 
+.menu__item a {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.menu__item:hover {
+	background: var(--secondary-color);
+}
 @keyframes appear {
 	from {
 		transform: translateX(100%);
-		opacity: 0;
 	}
 	to {
-		transform: translateX(0);
-		opacity: 1;
+		transform: translateX(2%);
 	}
 }
 

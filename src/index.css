@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+
 body,
 html {
 	width: 100%;
@@ -11,12 +13,13 @@ html {
 }
 
 :root {
-	font-family: sans-serif;
+	font-family: "Alata", sans-serif;
 	-moz-user-select: none;
 	user-select: none;
 	-webkit-user-select: none;
 
 	--primary-color: #1ec7b8;
+	--secondary-color: #1eaec7;
 	--card-color: #18daa8;
 	--modal-color: #17dbaa;
 
