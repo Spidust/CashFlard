@@ -53,7 +53,7 @@ function CreateModal(props) {
 			<label htmlFor="input">
 				{props.type == "categorie"
 					? "Nhập tên bộ đề"
-					: "Nhập dữ liệu của 4 đề"}
+					: "Nhập dữ liệu của bộ đề"}
 				:{" "}
 			</label>
 			<input

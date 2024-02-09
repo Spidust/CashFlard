@@ -54,6 +54,7 @@ function RenameModal(props) {
 			<input
 				type="text"
 				id="input"
+				placeholder="Tên mới"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 			/>

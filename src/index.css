@@ -22,8 +22,17 @@ html {
 	--secondary-color: #1eaec7;
 	--card-color: #18daa8;
 	--modal-color: #17dbaa;
+	--select-menu-color: #11c799;
 
 	font-size: 16px;
+}
+
+.overlay {
+	max-width: 500px;
+	max-height: 700px;
+	width: 100vw;
+	height: calc(100vh - 100px);
+	z-index: attr(z);
 }
 
 .left-overlay,
