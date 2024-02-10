@@ -14,7 +14,19 @@ export default function LoadCards() {
 						i.type &&
 						i.image
 					) {
-						return i;
+						let t = {
+							question: i.question,
+							"answer-f": i["answer-f"],
+							"answer-b": i["answer-b"],
+							type: i.type,
+							image: i.image,
+						};
+						//Âm thanh
+						if (i.sentence && i.lang) {
+							t = { ...t, sentence: i.sentence, lang: i.lang };
+						}
+
+						return t;
 					}
 				});
 			}

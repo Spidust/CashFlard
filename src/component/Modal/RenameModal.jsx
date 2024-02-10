@@ -5,7 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import RenameCategorie from "../../utils/State/RenameCategorie";
 import RenameTopic from "../../utils/State/RenameTopic";
 
-import Validate from "../../utils/Validate/Validate";
+import Validate from "../../core/Validate";
 
 function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
 	switch (Validate.CategorieName(newName)) {

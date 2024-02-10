@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import { HiMiniSpeakerWave } from "react-icons/hi2";
+import TextToSpeak from "../../core/TextToSpeech";
 
 function Front(props) {
+	let [sound, setSound] = useState();
+
+	useEffect(() => {
+		if (props.sentence && props.lang) {
+			setSound(new TextToSpeak(props.lang));
+		}
+	}, []);
+
+	useEffect(() => {
+		if (sound) {
+			sound.changeContent(props.sentence);
+		}
+	}, [sound]);
 	return (
 		<div className="card__front">
 			<div className="card-content">
@@ -51,6 +66,12 @@ function Front(props) {
 				}}
 			>
 				<FaCheck />
+				{sound && (
+					<HiMiniSpeakerWave
+						style={{ marginLeft: "10px" }}
+						onClick={() => sound.speak()}
+					/>
+				)}
 			</div>
 		</div>
 	);

@@ -38,6 +38,8 @@ function Card({ card, ...props }) {
 						type={editedCard.type}
 						input={input}
 						setInput={setInput}
+						sentence={editedCard.sentence}
+						lang={editedCard.lang}
 					/>
 
 					<Back
