@@ -13,21 +13,57 @@
 .item {
 	width: 90%;
 	height: 50px;
-	padding: 0px 10px;
 	margin: 10px auto;
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	position: relative;
 
-	border: rgba(3, 3, 3, 0.3) 1px solid;
-	border-radius: 3px;
+	/* border: rgba(3, 3, 3, 0.3) 1px solid;
+	border-radius: 3px; */
 
 	background-color: white;
 	color: black;
 	text-decoration: none;
 
 	cursor: pointer;
+}
 
-	transition: all 0.2s ease;
+.item.active > .item-layer-1 {
+	transform: translateY(-110%);
+}
+
+.item-layer-1,
+.item-layer-2 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+
+	display: flex;
+	align-items: center;
+}
+
+.item-layer-1 {
+	justify-content: space-between;
+
+	padding: 0px 10px;
+	transition: 0.5s;
+	background-color: white;
+
+	border: rgba(3, 3, 3, 0.3) 1px solid;
+	border-radius: 3px;
+}
+
+.item-layer-2 {
+	background-color: white;
+	border: rgba(3, 3, 3, 0.3) 1px solid;
+	border-radius: 3px;
+
+	justify-content: space-around;
+}
+
+.item-button {
+	padding: 7px 20px;
+	border-radius: 4px;
+
+	background-color: var(--secondary-color);
+	color: white;
 }

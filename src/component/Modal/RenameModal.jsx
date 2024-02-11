@@ -7,7 +7,7 @@ import RenameTopic from "../../utils/State/RenameTopic";
 
 import Validate from "../../core/Validate";
 
-function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
+function HandleRenameCategorie(dispatch, newName, id, quit) {
 	switch (Validate.CategorieName(newName)) {
 		case 0:
 			alert("Tên không được để trống");
@@ -20,10 +20,9 @@ function HandleRenameCategorie(dispatch, newName, id, quit, quitSelect) {
 	}
 	RenameCategorie(dispatch, newName, id);
 	quit();
-	quitSelect();
 }
 
-function HandleRenameTopic(dispatch, newName, parentId, id, quit, quitSelect) {
+function HandleRenameTopic(dispatch, newName, parentId, id, quit) {
 	switch (Validate.TopicName(newName, parentId)) {
 		case 0:
 			alert("Tên không được trùng");
@@ -36,7 +35,6 @@ function HandleRenameTopic(dispatch, newName, parentId, id, quit, quitSelect) {
 	}
 	RenameTopic(dispatch, parentId, id, newName);
 	quit();
-	quitSelect();
 }
 
 function RenameModal(props) {
@@ -67,8 +65,7 @@ function RenameModal(props) {
 								dispatch,
 								input,
 								props.id,
-								props.quit,
-								props.quitSelect
+								props.quit
 							);
 							break;
 						case "topic":
@@ -79,8 +76,7 @@ function RenameModal(props) {
 									.split("?")[0]
 									.split("/")[3],
 								props.id,
-								props.quit,
-								props.quitSelect
+								props.quit
 							);
 						default:
 							break;

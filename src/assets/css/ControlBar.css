@@ -25,10 +25,10 @@
 	background-color: var(--primary-color);
 	color: white;
 
-	transform: translateY(-20px);
+	position: relative;
+	bottom: 20px;
 	display: flex;
 	align-items: center;
-	position: relative;
 	z-index: 1;
 
 	cursor: pointer;

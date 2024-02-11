@@ -18,7 +18,6 @@ function BeforeDeleteModal(props) {
 				className="delete-btn"
 				onClick={() => {
 					props.quit(0);
-					props.quitSelect(0);
 					switch (type) {
 						case "categorie":
 							DeleteCategorie(dispatch, props.id);
