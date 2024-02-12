@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPlay } from "react-icons/fa";
+import { FaPlay, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 function Item(props) {
 	const navigate = useNavigate();
@@ -35,7 +35,7 @@ function Item(props) {
 				</div>
 
 				<div className="item-button" onClick={() => setActive(false)}>
-					Bỏ chọn
+					<FaTimes />
 				</div>
 			</div>
 			<div className="item-layer-1" onClick={() => setActive(true)}>
