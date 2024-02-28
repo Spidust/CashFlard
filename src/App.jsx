@@ -19,6 +19,15 @@ import SaveCards from "./utils/LocalStorage/SaveCards";
 import SaveTopics from "./utils/LocalStorage/SaveTopics";
 import SaveCategorie from "./utils/LocalStorage/SaveCategories";
 
+import Form from "./component/Auth/Form";
+
+import UserAPI from "./API/User";
+import { setUser } from "./redux/UserSlice";
+
+import ClearToken from "./utils/LocalStorage/ClearToken";
+import LoadToken from "./utils/LocalStorage/LoadToken";
+import SaveToken from "./utils/LocalStorage/SaveToken";
+
 function App() {
 	const [active, setActive] = useState(false);
 	const dispatch = useDispatch();
@@ -42,6 +51,25 @@ function App() {
 		SaveTopics(state.topic);
 	}, [state.topic]);
 
+	//auth
+
+	const auth = useSelector((state) => state.auth);
+
+	useEffect(() => {
+		LoadToken(dispatch);
+	}, []);
+
+	useEffect(() => {
+		SaveToken(auth.token);
+		if (auth.token) {
+			UserAPI.get().then((result) => {
+				if (Number.isInteger(result)) {
+					return ClearToken(dispatch);
+				}
+				dispatch(setUser(result));
+			});
+		}
+	}, [auth]);
 	return (
 		<div className="app">
 			<Router>
@@ -50,7 +78,8 @@ function App() {
 
 				<Routes>
 					<Route path="/">
-						<Route index element={<CategorieSet />} exact></Route>
+						<Route index element={<CategorieSet />}></Route>
+						<Route path="/login" exact element={<Form />} />
 						<Route path=":categorieId">
 							<Route element={<Play />} path={":topicId"}></Route>
 							<Route element={<TopicSet />} index></Route>

@@ -57,6 +57,7 @@
 	box-shadow: 0px -10px 0 0 white;
 }
 .control-bar .home-btn.menu-activated::before,
-.control-bar .home-btn.menu-activated::after {
+.control-bar .home-btn.menu-activated::after,
+.control-bar .home-btn.menu-activated {
 	display: none;
 }
