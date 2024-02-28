@@ -60,14 +60,19 @@ function App() {
 	}, []);
 
 	useEffect(() => {
+		console.log(auth.token);
 		SaveToken(auth.token);
 		if (auth.token) {
 			UserAPI.get().then((result) => {
 				if (Number.isInteger(result)) {
+					dispatch(setUser(false));
+
 					return ClearToken(dispatch);
 				}
 				dispatch(setUser(result));
 			});
+		} else {
+			dispatch(setUser(false));
 		}
 	}, [auth]);
 	return (
@@ -80,6 +85,11 @@ function App() {
 					<Route path="/">
 						<Route index element={<CategorieSet />}></Route>
 						<Route path="/login" exact element={<Form />} />
+						<Route
+							path="/register"
+							exact
+							element={<Form register />}
+						/>
 						<Route path=":categorieId">
 							<Route element={<Play />} path={":topicId"}></Route>
 							<Route element={<TopicSet />} index></Route>
