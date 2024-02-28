@@ -38,7 +38,10 @@ function Item(props) {
 					<FaTimes />
 				</div>
 			</div>
-			<div className="item-layer-1" onClick={() => setActive(true)}>
+			<div
+				className="item-layer-1"
+				onClick={props.onClick || (() => setActive(true))}
+			>
 				<h2 className="title">{props.name}</h2>
 				<div className="play-btn">
 					<FaPlay />

@@ -4,6 +4,7 @@ import CardSlice from "./CardSlice";
 import TopicSlice from "./TopicSlice";
 import AuthSlice from "./AuthSlice";
 import UserSlice from "./UserSlice";
+import ExamSlice from "./ExamSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
 		topic: TopicSlice,
 		auth: AuthSlice,
 		user: UserSlice,
+		exam: ExamSlice,
 	},
 });

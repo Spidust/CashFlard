@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Item from "./Item";
 import "../assets/css/home/Topic.css";
 import "../assets/css/Items.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import BeforeDeleteModal from "./Modal/BeforeDeleteModal";
 import RenameModal from "./Modal/RenameModal";
 import BeforePlayModal from "./Modal/BeforePlayModal";
@@ -13,6 +13,7 @@ function Sets(props) {
 	const [Play, setPlay] = useState(0);
 	const [selecting, Select] = useState(0);
 
+	const navigate = useNavigate();
 	return (
 		<>
 			{!props.data ? (
@@ -20,6 +21,13 @@ function Sets(props) {
 			) : (
 				<>
 					<div className="items">
+						{props.type == "categorie" && (
+							<Item
+								key={1}
+								name={"Kiểm tra"}
+								onClick={() => navigate("/exam")}
+							/>
+						)}
 						{props.data.map((topic, index) => {
 							return (
 								<Item

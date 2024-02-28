@@ -8,5 +8,5 @@ export default function (id) {
 			return i.name;
 		}
 	}
-	return `Hãy về trang chủ`;
+	return id == "exam" ? "Kiểm tra" : `Hãy về trang chủ`;
 }

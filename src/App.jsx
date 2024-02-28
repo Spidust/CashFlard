@@ -27,6 +27,7 @@ import { setUser } from "./redux/UserSlice";
 import ClearToken from "./utils/LocalStorage/ClearToken";
 import LoadToken from "./utils/LocalStorage/LoadToken";
 import SaveToken from "./utils/LocalStorage/SaveToken";
+import ExamSets from "./component/Exam/ExamSets";
 
 function App() {
 	const [active, setActive] = useState(false);
@@ -60,7 +61,6 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		console.log(auth.token);
 		SaveToken(auth.token);
 		if (auth.token) {
 			UserAPI.get().then((result) => {
@@ -89,6 +89,11 @@ function App() {
 							path="/register"
 							exact
 							element={<Form register />}
+						/>
+						<Route
+							path="/exam"
+							exact
+							element={<ExamSets data={[{ name: 1 }]} />}
 						/>
 						<Route path=":categorieId">
 							<Route element={<Play />} path={":topicId"}></Route>

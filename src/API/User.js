@@ -8,7 +8,6 @@ export default class UserAPI {
 	static async get() {
 		const res = await axios.get("/auth/");
 		const data = res.data;
-		console.log(res);
 		if (!data.sucess) {
 			return res.status;
 		}
