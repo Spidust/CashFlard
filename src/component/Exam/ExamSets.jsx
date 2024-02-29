@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { FaTimes, FaPlay } from "react-icons/fa";
-function ExamSets(props) {
+import AddExam from "../../utils/State/AddExam";
+import { useDispatch } from "react-redux";
+function ExamSets() {
 	const [active, setActive] = useState(false);
-
+	const data = [
+		{
+			name: "2",
+		},
+	];
+	const dispatch = useDispatch();
 	return (
 		<div className="exam-sets">
-			{props.data &&
-				props.data.map((i) => (
+			<button onClick={async () => alert(await AddExam("1", dispatch))}>
+				abc
+			</button>
+			{data &&
+				data.map((i) => (
 					<div
 						className={
 							"item hover-underline" + (active ? " active" : "")

@@ -90,11 +90,7 @@ function App() {
 							exact
 							element={<Form register />}
 						/>
-						<Route
-							path="/exam"
-							exact
-							element={<ExamSets data={[{ name: 1 }]} />}
-						/>
+						<Route path="/exam" exact element={<ExamSets />} />
 						<Route path=":categorieId">
 							<Route element={<Play />} path={":topicId"}></Route>
 							<Route element={<TopicSet />} index></Route>
