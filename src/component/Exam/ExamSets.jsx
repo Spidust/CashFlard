@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { FaTimes, FaPlay } from "react-icons/fa";
 import AddExam from "../../utils/State/AddExam";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 function ExamSets() {
 	const [active, setActive] = useState(false);
-	const data = [
-		{
-			name: "2",
-		},
-	];
+
+	const data = useSelector((state) => state.exam.list);
 	const dispatch = useDispatch();
 	return (
 		<div className="exam-sets">
-			<button onClick={async () => alert(await AddExam("1", dispatch))}>
+			<button
+				onClick={async () =>
+					alert(
+						await AddExam(
+							"75e7077c-69ca-47a1-a774-e1ddc71c0954",
+							dispatch
+						)
+					)
+				}
+			>
 				abc
 			</button>
 			{data &&

@@ -4,6 +4,7 @@ import NewCategorie from "../../utils/State/NewCategorie";
 import { useDispatch } from "react-redux";
 import { addTopics } from "../../utils/State/AddTopics";
 import Validate from "../../core/Validate.js";
+import AddExam from "../../utils/State/AddExam.js";
 
 function HandleCreateCategorie(dispatch, name, quit) {
 	switch (Validate.CategorieName(name)) {
@@ -25,6 +26,14 @@ function HandleAddTopic(parentId, data, dispatch, quit) {
 	quit();
 }
 
+async function HandleAddExam(id, dispatch, quit) {
+	const res = await AddExam(id, dispatch);
+
+	if (typeof res == "string") {
+		return alert(res);
+	}
+	quit();
+}
 function WatchFileInput(setFileInput) {
 	function onChange(event) {
 		var reader = new FileReader();
@@ -53,6 +62,8 @@ function CreateModal(props) {
 			<label htmlFor="input">
 				{props.type == "categorie"
 					? "Nhập tên bộ đề"
+					: props.type == "exam"
+					? "Nhập ID bài kiểm tra"
 					: "Nhập dữ liệu của bộ đề"}
 				:{" "}
 			</label>
@@ -61,11 +72,15 @@ function CreateModal(props) {
 				id="input"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
-				placeholder={props.type == "categorie" ? "Tên" : "JSON"}
+				placeholder={
+					props.type == "categorie"
+						? "Tên"
+						: props.type == "exam"
+						? "ID"
+						: "JSON"
+				}
 			/>
-			{props.type == "categorie" ? (
-				""
-			) : (
+			{props.type == "topic" && (
 				<input type="file" accept=".json" id="file-input"></input>
 			)}
 			<button
@@ -73,7 +88,9 @@ function CreateModal(props) {
 				onClick={() => {
 					if (props.type == "categorie")
 						HandleCreateCategorie(dispatch, input, props.quit);
-					else {
+					else if (props.type == "exam") {
+						HandleAddExam(input, dispatch, props.quit);
+					} else {
 						try {
 							const data = JSON.parse(input);
 							HandleAddTopic(

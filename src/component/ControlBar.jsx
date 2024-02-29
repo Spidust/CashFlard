@@ -32,7 +32,11 @@ function ControlBar(props) {
 					quit={() => setCreating(false)}
 					type={
 						window.location.href.split("?")[0].split("/")[3]
-							? "topic"
+							? window.location.href
+									.split("?")[0]
+									.split("/")[3] == "exam"
+								? "exam"
+								: "topic"
 							: "categorie"
 					}
 				/>
