@@ -48,4 +48,14 @@ export default class Validate {
 		}
 		return true;
 	}
+
+	static ExamsStructure(exams) {
+		return exams
+			.map((i) => {
+				if (i.name && i.id) {
+					return { name: i.name, id: i.id };
+				} else return false;
+			})
+			.filter((i) => i);
+	}
 }

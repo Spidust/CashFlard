@@ -4,8 +4,10 @@ import { FaTimes } from "react-icons/fa";
 
 import RenameCategorie from "../../utils/State/RenameCategorie";
 import RenameTopic from "../../utils/State/RenameTopic";
+import RenameExam from "../../utils/State/RenameExam";
 
 import Validate from "../../core/Validate";
+import getType from "../../utils/getType";
 
 function HandleRenameCategorie(dispatch, newName, id, quit) {
 	switch (Validate.CategorieName(newName)) {
@@ -42,9 +44,6 @@ function RenameModal(props) {
 
 	const dispatch = useDispatch();
 
-	const type = window.location.href.split("?")[0].split("/")[3]
-		? "topic"
-		: "categorie";
 	return (
 		<div className="rename-modal modal">
 			<FaTimes className="quit" onClick={() => props.quit(0)}></FaTimes>
@@ -59,7 +58,7 @@ function RenameModal(props) {
 			<button
 				className="rename-btn"
 				onClick={() => {
-					switch (type) {
+					switch (getType(window.location.href)) {
 						case "categorie":
 							HandleRenameCategorie(
 								dispatch,
@@ -78,6 +77,11 @@ function RenameModal(props) {
 								props.id,
 								props.quit
 							);
+							break;
+						case "exam":
+							RenameExam(props.id, input, dispatch);
+							props.quit();
+							break;
 						default:
 							break;
 					}

@@ -18,6 +18,7 @@ import LoadCards from "./utils/State/LoadCards";
 import SaveCards from "./utils/LocalStorage/SaveCards";
 import SaveTopics from "./utils/LocalStorage/SaveTopics";
 import SaveCategorie from "./utils/LocalStorage/SaveCategories";
+import SaveExams from "./utils/LocalStorage/SaveExam";
 
 import Form from "./component/Auth/Form";
 
@@ -28,6 +29,7 @@ import ClearToken from "./utils/LocalStorage/ClearToken";
 import LoadToken from "./utils/LocalStorage/LoadToken";
 import SaveToken from "./utils/LocalStorage/SaveToken";
 import ExamSets from "./component/Exam/ExamSets";
+import LoadExams from "./utils/LocalStorage/LoadExams";
 
 function App() {
 	const [active, setActive] = useState(false);
@@ -38,6 +40,7 @@ function App() {
 		LoadCategories(dispatch);
 		LoadTopics(dispatch);
 		LoadCards(dispatch);
+		LoadExams(dispatch);
 	}, []);
 
 	useEffect(() => {
@@ -52,6 +55,9 @@ function App() {
 		SaveTopics(state.topic);
 	}, [state.topic]);
 
+	useEffect(() => {
+		SaveExams(state.exam.list);
+	}, [state.exam]);
 	//auth
 
 	const auth = useSelector((state) => state.auth);
