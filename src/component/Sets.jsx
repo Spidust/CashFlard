@@ -21,13 +21,6 @@ function Sets(props) {
 			) : (
 				<>
 					<div className="items">
-						{props.type == "categorie" && (
-							<Item
-								key={1}
-								name={"Kiểm tra"}
-								onClick={() => navigate("/exam")}
-							/>
-						)}
 						{props.data.map((topic, index) => {
 							return (
 								<Item

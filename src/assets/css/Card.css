@@ -120,12 +120,12 @@
 }
 
 .change-action {
-	animation: change 0.3s ease;
+	animation: change 0.6s ease-in;
 }
 
 @keyframes change {
 	from {
-		transform: translateX(-100%);
+		transform: translateX(-150%);
 	}
 	to {
 		transform: translateX(0);

@@ -3,6 +3,7 @@ import "../assets/css/ControlBar.css";
 import { Link } from "react-router-dom";
 import CreateModal from "./Modal/CreateModal";
 import { useState } from "react";
+import getType from "./../utils/getType";
 
 function ControlBar(props) {
 	const [creating, setCreating] = useState(false);
@@ -30,15 +31,7 @@ function ControlBar(props) {
 			{creating && (
 				<CreateModal
 					quit={() => setCreating(false)}
-					type={
-						window.location.href.split("?")[0].split("/")[3]
-							? window.location.href
-									.split("?")[0]
-									.split("/")[3] == "exam"
-								? "exam"
-								: "topic"
-							: "categorie"
-					}
+					type={getType(window.location.href)}
 				/>
 			)}
 		</>

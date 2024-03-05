@@ -6,6 +6,7 @@ import Result from "./Result";
 
 import { useSearchParams } from "react-router-dom";
 import { v4 } from "uuid";
+import { useLayoutEffect } from "react";
 
 function duplicateItems(arr = [], numberOfRepetitions) {
 	return arr.flatMap((i) =>
@@ -48,12 +49,13 @@ function Play() {
 		}
 	}, [indexed]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		setChange(true);
-		setTimeout(() => setChange(false), 300);
+		setTimeout(() => setChange(false), 600);
 	}, [current]);
+
 	return (
-		<div className="play">
+		<div className="play flex items-center relative">
 			{cards.length != indexed.length ? (
 				<Card
 					Change={Change}

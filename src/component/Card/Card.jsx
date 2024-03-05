@@ -13,21 +13,21 @@ function Card({ card, ...props }) {
 
 	useEffect(() => {
 		setEditedCard(card);
-		if (card.type == "tn") {
+		if (card.type == "tn" && props.Change) {
 			setEditedCard((prev) => {
 				const copy = { ...prev };
 				copy["answer-f"] = randomizeAnswer(prev["answer-f"]);
 				return copy;
 			});
 		}
-	}, [card]);
+	}, [props.Change]);
 	return (
 		<>
 			{editedCard && (
 				<ReactCardFlip
 					isFlipped={isFlipped}
 					flipDirection="horizontal"
-					flipSpeedBackToFront={0}
+					flipSpeedBackToFront={-10}
 					containerClassName={props.Change ? "change-action" : ""}
 				>
 					<Front

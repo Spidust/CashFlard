@@ -3,7 +3,6 @@ import { FaTimes } from "react-icons/fa";
 import DeleteCategorie from "../../utils/State/DeleteCategorie";
 import { useDispatch } from "react-redux";
 import DeleteTopic from "../../utils/State/DeleteTopic";
-import DeleteExam from "../../utils/State/DeleteExam";
 import getType from "../../utils/getType";
 
 function BeforeDeleteModal(props) {
@@ -20,9 +19,6 @@ function BeforeDeleteModal(props) {
 					switch (getType(window.location.href)) {
 						case "categorie":
 							DeleteCategorie(dispatch, props.id);
-							break;
-						case "exam":
-							DeleteExam(props.id, dispatch);
 							break;
 						case "topic":
 							DeleteTopic(
