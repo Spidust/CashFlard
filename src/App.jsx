@@ -52,7 +52,10 @@ function App() {
 					<Route path="/">
 						<Route index element={<CategorieSet />}></Route>
 						<Route path=":categorieId">
-							<Route element={<Play />} path={":topicId"}></Route>
+							<Route
+								element={<Play active={active} />}
+								path={":topicId"}
+							></Route>
 							<Route element={<TopicSet />} index></Route>
 						</Route>
 					</Route>

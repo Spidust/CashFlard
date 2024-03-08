@@ -9,21 +9,10 @@ import Back from "./Back";
 function Card({ card, ...props }) {
 	const [isFlipped, setFlipped] = useState(false);
 	const [input, setInput] = useState("");
-	const [editedCard, setEditedCard] = useState();
 
-	useEffect(() => {
-		setEditedCard(card);
-		if (card.type == "tn" && props.Change) {
-			setEditedCard((prev) => {
-				const copy = { ...prev };
-				copy["answer-f"] = randomizeAnswer(prev["answer-f"]);
-				return copy;
-			});
-		}
-	}, [props.Change]);
 	return (
 		<>
-			{editedCard && (
+			{card && (
 				<ReactCardFlip
 					isFlipped={isFlipped}
 					flipDirection="horizontal"
@@ -32,22 +21,22 @@ function Card({ card, ...props }) {
 				>
 					<Front
 						setFlipped={setFlipped}
-						image={editedCard.image}
-						question={editedCard.question}
-						answer={editedCard["answer-f"]}
-						type={editedCard.type}
+						image={card.image}
+						question={card.question}
+						answer={card["answer-f"]}
+						type={card.type}
 						input={input}
 						setInput={setInput}
-						sentence={editedCard.sentence}
-						lang={editedCard.lang}
+						sentence={card.sentence}
+						lang={card.lang}
 					/>
 
 					<Back
 						setFlipped={setFlipped}
-						image={editedCard.image}
-						question={editedCard.question}
-						answer-f={editedCard["answer-f"]}
-						answer-b={editedCard["answer-b"]}
+						image={card.image}
+						question={card.question}
+						answer-f={card["answer-f"]}
+						answer-b={card["answer-b"]}
 						input={input}
 						setIndexed={props.setIndexed}
 						length={props.length}
@@ -55,11 +44,11 @@ function Card({ card, ...props }) {
 						indexed={props.indexed}
 						current={props.current}
 						result={
-							editedCard.type == "tl"
-								? input == editedCard["answer-b"]
-								: editedCard.type == "tn"
-								? editedCard["answer-f"].split(",")[input] ==
-								  editedCard["answer-b"]
+							card.type == "tl"
+								? input == card["answer-b"]
+								: card.type == "tn"
+								? card["answer-f"].split(",")[input] ==
+								  card["answer-b"]
 								: false
 						}
 					/>

@@ -4,6 +4,7 @@ function Result(props) {
 	const [Right, setRight] = React.useState(0);
 
 	React.useEffect(() => {
+		setRight(0);
 		props.indexed.forEach((i) => {
 			if (i[i.length - 1] == "d") {
 				setRight((prev) => prev + 1);

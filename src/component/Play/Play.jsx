@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Card from "./../Card/Card";
 import "../../assets/css/play/Play.css";
-import { useSelector } from "react-redux";
 import Result from "./Result";
 
 import { useSearchParams } from "react-router-dom";
-import { v4 } from "uuid";
-import { useLayoutEffect } from "react";
+import { store } from "../../redux/store";
 
 function duplicateItems(arr = [], numberOfRepetitions) {
 	return arr.flatMap((i) =>
@@ -14,63 +12,70 @@ function duplicateItems(arr = [], numberOfRepetitions) {
 	);
 }
 
-function HandleNext(indexed, length) {
-	let i = Math.floor(Math.random() * length);
+function shuffle(array) {
+	let currentIndex = array.length,
+		randomIndex;
 
-	while (indexed.includes(`${i}d`) || indexed.includes(`${i}s`)) {
-		i = Math.floor(Math.random() * length);
+	// While there remain elements to shuffle.
+	while (currentIndex > 0) {
+		// Pick a remaining element.
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+
+		// And swap it with the current element.
+		[array[currentIndex], array[randomIndex]] = [
+			array[randomIndex],
+			array[currentIndex],
+		];
 	}
 
-	return i;
+	return array;
 }
 
-function Play() {
+function Play(props) {
 	const id = window.location.href.split("?")[0].split("/")[4];
 	const [searchParams, setSearchParams] = useSearchParams();
 	const duplicate = searchParams.get("duplicate");
 
-	const cards =
-		useSelector((state) => {
-			return duplicateItems(
-				state.card[id],
-				duplicate > 0 ? Number(duplicate) : 2
-			);
-		}) || [];
-
-	const [current, setCurrent] = useState(
-		Math.floor(Math.random() * cards.length)
+	const cards = useRef(
+		duplicateItems(
+			store.getState().card[id],
+			duplicate > 0 ? Number(duplicate) : 1
+		) || []
 	);
-	let [indexed, setIndexed] = useState([]);
+	useEffect(() => {
+		cards.current = shuffle(cards.current);
+	}, []);
+
+	const [current, setCurrent] = useState(0);
+	const [indexed, setIndexed] = useState([]);
 
 	const [Change, setChange] = useState(false);
 	useEffect(() => {
-		if (cards.length != indexed.length) {
-			setCurrent(HandleNext(indexed, cards.length));
-		}
+		setCurrent(indexed.length);
 	}, [indexed]);
-
-	useLayoutEffect(() => {
-		setChange(true);
-		setTimeout(() => setChange(false), 600);
-	}, [current]);
 
 	return (
 		<div className="play flex items-center relative">
-			{cards.length != indexed.length ? (
+			{cards.current.length != indexed.length ? (
 				<Card
 					Change={Change}
-					card={{ ...cards[current], id: v4() }}
-					setCurrent={setCurrent}
+					card={cards.current[current]}
 					current={current}
 					indexed={indexed}
-					setIndexed={setIndexed}
-					length={cards.length}
+					setIndexed={(value) => {
+						setIndexed(value);
+						setChange(true);
+						setTimeout(() => setChange(false), 600);
+					}}
+					length={cards.current.length}
 				/>
 			) : (
 				<Result
 					indexed={indexed}
-					length={cards.length}
+					length={cards.current.length}
 					setIndexed={setIndexed}
+					active={props.active}
 				/>
 			)}
 		</div>
