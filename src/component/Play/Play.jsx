@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./../Card/Card";
 import "../../assets/css/play/Play.css";
 import Result from "./Result";
@@ -29,25 +29,32 @@ function shuffle(array) {
 		];
 	}
 
+	randomIndex = Math.floor(Math.random() * array.length);
+	currentIndex = 0;
+
+	[array[currentIndex], array[randomIndex]] = [
+		array[randomIndex],
+		array[currentIndex],
+	];
 	return array;
 }
-
 function Play(props) {
 	const id = window.location.href.split("?")[0].split("/")[4];
 	const [searchParams, setSearchParams] = useSearchParams();
 	const duplicate = searchParams.get("duplicate");
 
-	const cards = useRef(
+	const [cards, setCards] = useState(
 		duplicateItems(
 			store.getState().card[id],
 			duplicate > 0 ? Number(duplicate) : 1
 		) || []
 	);
 	useEffect(() => {
-		cards.current = shuffle(cards.current);
+		setCards(shuffle(cards));
+		setCurrent(0);
 	}, []);
 
-	const [current, setCurrent] = useState(0);
+	const [current, setCurrent] = useState(-1);
 	const [indexed, setIndexed] = useState([]);
 
 	const [Change, setChange] = useState(false);
@@ -57,10 +64,10 @@ function Play(props) {
 
 	return (
 		<div className="play flex items-center relative">
-			{cards.current.length != indexed.length ? (
+			{cards.length != indexed.length && current >= 0 ? (
 				<Card
 					Change={Change}
-					card={cards.current[current]}
+					card={cards[current]}
 					current={current}
 					indexed={indexed}
 					setIndexed={(value) => {
@@ -68,12 +75,12 @@ function Play(props) {
 						setChange(true);
 						setTimeout(() => setChange(false), 600);
 					}}
-					length={cards.current.length}
+					length={cards.length}
 				/>
 			) : (
 				<Result
 					indexed={indexed}
-					length={cards.current.length}
+					length={cards.length}
 					setIndexed={setIndexed}
 					active={props.active}
 				/>

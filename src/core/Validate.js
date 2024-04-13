@@ -44,6 +44,7 @@ export default class Validate {
 			!json["answer-b"] ||
 			!json.type
 		) {
+			console.log(json)
 			return false;
 		}
 		return true;

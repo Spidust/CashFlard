@@ -4,13 +4,15 @@ import { HiMiniSpeakerWave } from "react-icons/hi2";
 import TextToSpeak from "../../core/TextToSpeech";
 
 function Front(props) {
-	let [sound, setSound] = useState();
+	let [sound, setSound] = useState();;
 
 	useEffect(() => {
 		if (props.sentence && props.lang) {
 			setSound(new TextToSpeak(props.lang));
+		} else {
+			setSound(null)
 		}
-	}, []);
+	}, [props]);
 
 	useEffect(() => {
 		if (sound) {
