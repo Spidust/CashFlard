@@ -63,7 +63,7 @@ function CreateModal(props) {
 				id="input"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
-				placeholder={props.type == "categorie" ? "Tên" : "JSON"}
+				placeholder={props.type == "categorie" ? "Tên" : "Đề"}
 			/>
 			{props.type == "topic" && (
 				<input type="file" accept=".json" id="file-input"></input>

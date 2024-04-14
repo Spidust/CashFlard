@@ -50,6 +50,8 @@
 
 	border: rgba(3, 3, 3, 0.3) 1px solid;
 	border-radius: 3px;
+
+	z-index: 2;
 }
 
 .item-layer-2 {

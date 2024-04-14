@@ -18,7 +18,7 @@ function Menu(props) {
 			<FaTimes className="quit z-10" onClick={props.quit}></FaTimes>
 			<div className="menu__item">
 				<a href="https://github.com/Spidust/CashFlard">
-					<TbBrandGithubFilled size={20} /> Github Dự Án
+					<TbBrandGithubFilled size={20} /> Github Dự Án(Kéo xuống thấy HDSD)
 				</a>
 			</div>
 			<div className="menu__item">

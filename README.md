@@ -25,7 +25,7 @@ Mục lục:
 
 ### Bước 1: Tạo thư mục
 
-Khi vừa vào web site, giao diện sẽ trông như thế này, ở góc trái của ứng dụng sẽ có một dấu cộng. Ở trang chủ(chú ý phần trên của ứng dụng), dấu cộng sẽ dùng để tạo thư mục để chứa các đề(gọi là bộ đề).
+Khi vừa vào website, giao diện sẽ trông như thế này, ở góc trái của ứng dụng sẽ có một dấu cộng. Ở trang chủ(chú ý phần trên của ứng dụng), dấu cộng sẽ dùng để tạo thư mục để chứa các đề(gọi là bộ đề).
 ![Ảnh mô tả](https://i.imgur.com/S8nGtQo.png)
 Khi đã bấm vào thì bạn sẽ nhập tên và bấm tạo. Sau đó bấm chọn vào bộ đề(thư mục) bạn vừa tạo, ở đây có nhiều nút, mà bạn đọc cũng hiểu mà, nên chúng ta sẽ chỉ tập trung vào nút "Vào" và đi tới bước 2.
 ### Bước 2: Nhập đề
