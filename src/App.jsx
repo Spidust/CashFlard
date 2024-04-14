@@ -50,17 +50,14 @@ function App() {
 
 	useEffect(() => {
 		SaveCards(state.card);
-		debounced();
 	}, [state.card]);
 
 	useEffect(() => {
 		SaveCategorie(state.categorie.value);
-		debounced();
 	}, [state.categorie.value]);
 
 	useEffect(() => {
 		SaveTopics(state.topic);
-		debounced();
 	}, [state.topic]);
 
 	//auth
@@ -74,6 +71,7 @@ function App() {
 				if (user) {
 					dispatch(setUser(user));
 				} else {
+					setIsUsingUserData(false);
 					SetToken("", dispatch);
 				}
 			});
@@ -95,11 +93,16 @@ function App() {
 
 		SaveCards(JSON.parse(Bin.card));
 		LoadCards(dispatch);
+		setIsUsingUserData(true);
 	}
 
 	const SyncWithClient = async () => {
 		if (isUsingUserData && state.user.token) {
-			const r = await UpdateBin({ categorie: JSON.stringify(state.categorie.value), topic: JSON.stringify(state.topic), card: JSON.stringify(state.card) })
+			const r = await UpdateBin(
+				{ categorie: JSON.stringify(state.categorie.value), 
+					topic: JSON.stringify(state.topic), 
+					card: JSON.stringify(state.card) })
+				console.log(state);
 			if (r == 1) {
 				alert("Lưu dữ liệu lên máy chủ thất bại");
 			}
@@ -138,6 +141,7 @@ function App() {
 
 	const debounced = React.useCallback(debounce(SyncWithClient, 500), [state.categorie.value, state.topic, state.card]);
 
+	useEffect(debounced, [state.categorie.value, state.topic, state.card])
 	return (
 		<div className="app">
 			<img src="/image/logo.png" alt="Logo" className="absolute top-[50%] left-[50%] w-[40%]" style={{
