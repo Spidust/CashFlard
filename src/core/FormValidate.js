@@ -23,4 +23,8 @@ export default class FormValidate {
   static haveSpecialChar(s) {
     return !s.match(/[A-Za-z_]/);
   }
+  
+  static MoreThanNchar(n, s) {
+    return s.length > n;
+  }
 }

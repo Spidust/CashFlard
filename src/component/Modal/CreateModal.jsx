@@ -13,6 +13,8 @@ function HandleCreateCategorie(dispatch, name, quit) {
 		case 1:
 			alert("Tên không được trùng");
 			return;
+		case 3:
+			alert("Tên không được dài quá 30 ký tự")
 		default:
 			break;
 	}

@@ -33,10 +33,9 @@ import GetBin from "./API/GetBin";
 import UpdateBin from "./API/UpdateBin";
 
 import { setCategories } from "./redux/CategorieSlice";
-import { setTopics } from "./redux/TopicSlice";
-import { setCards } from "./redux/CardSlice";
 
 import { debounce } from "lodash";
+import { FaBars } from "react-icons/fa";
 
 function App() {
 	const [active, setActive] = useState(false);
@@ -68,8 +67,9 @@ function App() {
 	useEffect(() => {
 		SetToken(LoadToken(), dispatch)
 	}, []);
+
 	useEffect(() => {
-		if (state.user.token.length) {
+		if (state.user.token) {
 			GetUser().then(user => {
 				if (user) {
 					dispatch(setUser(user));
@@ -89,12 +89,21 @@ function App() {
 
 	const SyncWithServer = () => {
 		dispatch(setCategories(JSON.parse(Bin.categorie)));
-		dispatch(setTopics(JSON.parse(Bin.topic)));
-		dispatch(setCards(Bin.card));
+
+		SaveTopics(JSON.parse(Bin.topic));
+		LoadTopics(dispatch);
+
+		SaveCards(JSON.parse(Bin.card));
+		LoadCards(dispatch);
 	}
 
-	const SyncWithClient = () => {
-		if (isUsingUserData && state.user.token) UpdateBin({ categorie: JSON.stringify(state.categorie.value), topic: JSON.stringify(state.topic), card: JSON.stringify(state.card) })
+	const SyncWithClient = async () => {
+		if (isUsingUserData && state.user.token) {
+			const r = await UpdateBin({ categorie: JSON.stringify(state.categorie.value), topic: JSON.stringify(state.topic), card: JSON.stringify(state.card) })
+			if (r == 1) {
+				alert("Lưu dữ liệu lên máy chủ thất bại");
+			}
+		}
 	}
 	useEffect(() => {
 		if (state.user.token) {
@@ -127,21 +136,26 @@ function App() {
 		}
 	}, [state.user.token]);
 
-	const debounced = React.useCallback(debounce(SyncWithClient, 1000), [state.categorie.value, state.topic, state.card]);
+	const debounced = React.useCallback(debounce(SyncWithClient, 500), [state.categorie.value, state.topic, state.card]);
 
 	return (
 		<div className="app">
+			<img src="/image/logo.png" alt="Logo" className="absolute top-[50%] left-[50%] w-[40%]" style={{
+				transform: "translate(-50%, -50%)"
+			}} />
+			<p className="absolute bottom-[60px]">Hướng dẫn sử dụng trong <FaBars></FaBars></p>
 			<Router>
 				{!isSync && <SyncModal quit={() => setIsSync(true)} SyncWithServer={SyncWithServer} SyncWithClient={() => { setIsUsingUserData(true); SyncWithClient() }} />}
 				<TopBar></TopBar>
 				<Menu active={active} quit={() => setActive(false)} />
 
 				<Routes>
-					<Route path="login" element={<Login />}></Route>
-					<Route path="Register" element={<Register />}></Route>
+						<Route path="login" element={<Login />}></Route>
+						<Route path="Register" element={<Register />}></Route>
 
 					<Route path="/">
 						<Route index element={<CategorieSet />}></Route>
+
 						<Route path=":categorieId">
 							<Route
 								element={<Play active={active} />}

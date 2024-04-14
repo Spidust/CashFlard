@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Item from "./Item";
 import "../assets/css/home/Topic.css";
 import "../assets/css/Items.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import BeforeDeleteModal from "./Modal/BeforeDeleteModal";
 import RenameModal from "./Modal/RenameModal";
 import BeforePlayModal from "./Modal/BeforePlayModal";
@@ -13,7 +13,6 @@ function Sets(props) {
 	const [Play, setPlay] = useState(0);
 	const [selecting, Select] = useState(0);
 
-	const navigate = useNavigate();
 	return (
 		<>
 			{!props.data ? (
@@ -24,7 +23,7 @@ function Sets(props) {
 						{props.data.map((topic, index) => {
 							return (
 								<Item
-									key={index}
+									key={topic.id}
 									id={topic.id}
 									name={topic.name}
 									type={props.type}
@@ -38,12 +37,12 @@ function Sets(props) {
 					</div>
 
 					{Delete ? (
-						<BeforeDeleteModal quit={setDelete} id={Delete} />
+						<BeforeDeleteModal quit={(i) => {setDelete(i); Select(i)}} id={Delete} />
 					) : (
 						""
 					)}
 
-					{Edit ? <RenameModal quit={setEdit} id={Edit} /> : ""}
+					{Edit ? <RenameModal quit={(i) => {setEdit(i); Select(i)}} id={Edit} /> : ""}
 
 					{Play ? (
 						<BeforePlayModal quit={setPlay} id={selecting} />

@@ -11,7 +11,9 @@ function ControlBar(props) {
 	return (
 		<>
 			<div className="control-bar bar">
-				<div className="new-button" onClick={() => setCreating(true)}>
+				<div className="new-button" onClick={() => { 
+					if (window.location.pathname.split("/")[1] != "login" && window.location.pathname.split("/")[1] != "register")
+					setCreating(true) }}>
 					<FaPlus />
 				</div>
 				<Link
@@ -30,7 +32,7 @@ function ControlBar(props) {
 
 			{creating && (
 				<CreateModal
-					quit={() => setCreating(false)}
+					quit={() => {setCreating(false)}}
 					type={getType(window.location.href)}
 				/>
 			)}

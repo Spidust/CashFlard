@@ -31,39 +31,46 @@ function Register() {
     const handler = async () => {
         if (validate()) return;
 
-        const result = await register(username, password, displayName);
+        try {
+            const result = await register(username, password, displayName);
 
-        if (result) {
-            SetToken(result, dispatch);
-            alert("Đã đăng ký thành công!");
-        } else {
-            alert("Đăng ký không thành công!")
+            if (result) {
+                SetToken(result, dispatch);
+                alert("Đã đăng ký thành công!");
+            } else {
+                alert("Đăng ký không thành công!")
+            }
+        } catch(e) {
+            alert("Đăng ký không thành công!");
         }
+        
     }
 
     const validate = () => {
-        //username
         let flag = false;
-
+        //display name
+        if (FormValidate.LessThanNchar(8, displayName) || FormValidate.MoreThanNchar(32, displayName)) {
+            setDisplayNameError("Tên hiển thị phải có ít nhất 8 và không quá 32 ký tự");
+            flag = true;
+        } else {
+            setDisplayNameError(false);
+        }
+        //username
         if (FormValidate.LessThanNchar(4, username)) {
             setUsernameError("Tên người dùng phải có ít nhất 4 ký tự");
             flag = true;
         } else if (FormValidate.haveSpecialChar(username)) {
             setUsernameError("Tên người dùng không được chứa ký tự đặc biệt");
             flag = true;
+        } else if (FormValidate.MoreThanNchar(20, username)) {
+            setUsernameError("Tên người dùng không được dài quá 20 ký tự");
+            flag = true;
         } else {
             setUsernameError(false);
         }
-        //display name
-        if (FormValidate.LessThanNchar(8, displayName)) {
-            setDisplayNameError("Tên hiển thị phải có ít nhất 8 ký tự");
-            flag = true;
-        } else {
-            setDisplayNameError(false);
-        }
         //password
-        if (FormValidate.LessThanNchar(8, password)) {
-            setPasswordError("Mật khẩu phải có ít nhất 8 ký tự");
+        if (FormValidate.LessThanNchar(8, password) || FormValidate.MoreThanNchar(32, password)) {
+            setPasswordError("Mật khẩu phải có ít nhất 8 và không quá 32 ký tự");
             flag = true;
         } else {
             setPasswordError(false);

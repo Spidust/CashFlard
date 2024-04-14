@@ -28,7 +28,7 @@
 }
 
 .item.active > .item-layer-1 {
-	transform: translateY(-110%);
+	transform: translateY(110%);
 }
 
 .item-layer-1,

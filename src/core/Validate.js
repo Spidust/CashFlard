@@ -6,6 +6,9 @@ export default class Validate {
 		if (!name || name.length == 0) {
 			return 0;
 		}
+		if (name.length > 30) {
+			return 3;
+		}
 		//Check trùng tên
 		const categorie = store.getState().categorie.value;
 
@@ -22,7 +25,7 @@ export default class Validate {
 		if (!name || !parentId) {
 			return 1;
 		}
-
+		
 		const topic = store.getState().topic[parentId];
 
 		if (topic) {
@@ -44,7 +47,6 @@ export default class Validate {
 			!json["answer-b"] ||
 			!json.type
 		) {
-			console.log(json)
 			return false;
 		}
 		return true;

@@ -14,7 +14,7 @@ function BeforePlayModal(props) {
 					props.quit();
 				}}
 			></FaTimes>
-			<label htmlFor="input">Số lần lặp lại mỗi thẻ</label>
+			<label htmlFor="input">Số lần xuất hiện mỗi thẻ</label>
 			<input
 				type="number"
 				id="input"

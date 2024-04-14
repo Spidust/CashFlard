@@ -31,14 +31,19 @@ function Login() {
     const handler = async () => {
         if (validate()) return;
 
-        const result = await login(username, password);
+        try {
+
+            const result = await login(username, password);
         
-        if (result) {
-            SetToken(result, dispatch);
-            alert("Đã đăng nhập thành công!")
-        } else {
-            alert("Đăng nhập không thành công!")
-        }
+            if (result) {
+                SetToken(result, dispatch);
+                alert("Đã đăng nhập thành công!")
+            } else {
+                alert("Đăng nhập không thành công!")
+            }} catch(e) {
+                alert("Đăng nhập không thành công!")
+
+            }
     }
 
     const validate = () => {
@@ -51,17 +56,20 @@ function Login() {
         } else if (FormValidate.haveSpecialChar(username)) {
             setUsernameError("Tên người dùng không được chứa ký tự đặc biệt");
             flag = true;
+        } else if (FormValidate.MoreThanNchar(20, username)) {
+            setUsernameError("Tên người dùng không được dài quá 20 ký tự");
+            flag = true;
         } else {
             setUsernameError(false);
         }
         //password
-        if (FormValidate.LessThanNchar(8, password)) {
-            setPasswordError("Mật khẩu phải có ít nhất 8 ký tự");
+        if (FormValidate.LessThanNchar(8, password) || FormValidate.MoreThanNchar(32, password)) {
+            setPasswordError("Mật khẩu phải có ít nhất 8 và không quá 32 ký tự");
             flag = true;
         } else {
             setPasswordError(false);
         }
-
+        
         return flag;
     }
     return (
